@@ -40,7 +40,9 @@ $docs = Join-Path $root 'artifacts/release-documentation'
 foreach ($file in @('README.md', 'LICENSE')) { Copy-Item -LiteralPath "$root/$file" -Destination $docs }
 Copy-Item -LiteralPath "$projectDirectory/README.md" -Destination "$docs/Package-Guide.md"
 Copy-Item -LiteralPath "$projectDirectory/RELEASE-NOTES.md" -Destination $docs
-Copy-Item -LiteralPath "$extracted/Licenses" -Destination $docs -Recurse
+$licenses = Join-Path $docs 'licenses'
+[IO.Directory]::CreateDirectory($licenses) | Out-Null
+Get-ChildItem -LiteralPath "$extracted/Licenses" | Copy-Item -Destination $licenses -Recurse
 Copy-Item -LiteralPath "$root/sources.lock.json" -Destination $docs
 Copy-Item -LiteralPath "$root/release-packages.json" -Destination $docs
 foreach ($file in $config.documentation) {
@@ -54,7 +56,7 @@ foreach ($file in @('README.md', 'RELEASE-NOTES.md', 'THIRD-PARTY-NOTICES.md')) 
 }
 if (Test-Path "$projectDirectory/licenses") { Copy-Item -LiteralPath "$projectDirectory/licenses" -Destination $packageDocs -Recurse }
 Copy-Item -LiteralPath "$root/THIRD-PARTY-NOTICES.md" -Destination $docs
-Copy-Item -LiteralPath "$root/licenses" -Destination $docs -Recurse
+Get-ChildItem -LiteralPath "$root/licenses" | Copy-Item -Destination $licenses -Recurse
 [IO.Compression.ZipFile]::CreateFromDirectory($docs, "$release/$Package-Documentation.zip")
 foreach ($archive in @(Get-ChildItem $release -File | Where-Object Extension -In '.pkg', '.zip')) {
     $zip = [IO.Compression.ZipFile]::OpenRead($archive.FullName)
