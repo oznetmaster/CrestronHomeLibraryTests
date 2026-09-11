@@ -3,12 +3,11 @@
 
 param([string] $Package = 'KasaClient.ProcessorTests')
 $ErrorActionPreference = 'Stop'
-switch ($Package) {
-    'KasaClient.ProcessorTests' {
-        foreach ($framework in @('net472', 'net10.0')) {
-            dotnet test "$PSScriptRoot/sources/KasaClient/KasaClient.Tests/KasaClient.Tests.csproj" -c Release -f $framework --filter 'TestCategory!=Live'
-            if ($LASTEXITCODE -ne 0) { throw "Client desktop tests failed for $framework." }
-        }
+$config = & "$PSScriptRoot/Get-ReleasePackage.ps1" -Package $Package
+foreach ($test in $config.tests) {
+    foreach ($framework in $test.frameworks) {
+        $project = Join-Path $PSScriptRoot "sources/$($test.source)/$($test.project)"
+        dotnet test $project -c Release -f $framework --filter 'TestCategory!=Live'
+        if ($LASTEXITCODE -ne 0) { throw "Desktop tests failed: $($test.project) ($framework)." }
     }
-    default { throw 'Add deterministic desktop validation before releasing this package.' }
 }

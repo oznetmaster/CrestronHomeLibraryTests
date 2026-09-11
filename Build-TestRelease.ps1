@@ -10,7 +10,7 @@ param(
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $root = $PSScriptRoot
-if ($Package -ne 'KasaClient.ProcessorTests') { throw 'Unsupported release package.' }
+$config = & "$root/Get-ReleasePackage.ps1" -Package $Package
 $projectDirectory = Join-Path $root "packages/$Package"
 & "$root/Build.ps1" -Configuration Release -Package $Package -LockedSources -ReleaseVersion $Version -ManifestUtilExe $ManifestUtilExe
 & "$root/Validate-Tests.ps1" -Package $Package
@@ -22,7 +22,7 @@ $pkg = Join-Path $output "$Package.pkg"
 # Inspect the actual shipped assembly, not just pre-package build output.
 $extracted = Join-Path $root ('artifacts/verify-' + [Guid]::NewGuid().ToString('N'))
 [IO.Compression.ZipFile]::ExtractToDirectory($pkg, $extracted)
-& "$SdkRoot/ProcessorTestPackage.Validation/bin/Release/net472/ProcessorTestPackage.Validation.exe" "$extracted/$Package.dll" "$root/artifacts/validation" 104
+& "$SdkRoot/ProcessorTestPackage.Validation/bin/Release/net472/ProcessorTestPackage.Validation.exe" "$extracted/$Package.dll" "$root/artifacts/validation" $config.expectedCount
 if ($LASTEXITCODE -ne 0) { throw 'Packaged test discovery failed.' }
 $manifest = Get-Content "$projectDirectory/$Package.json" -Raw | ConvertFrom-Json
 if ($manifest.GeneralInformation.DeviceType -ne 'Utility') { throw 'Processor test packages must use the Utility category.' }
@@ -42,7 +42,19 @@ Copy-Item -LiteralPath "$projectDirectory/README.md" -Destination "$docs/Package
 Copy-Item -LiteralPath "$projectDirectory/RELEASE-NOTES.md" -Destination $docs
 Copy-Item -LiteralPath "$extracted/Licenses" -Destination $docs -Recurse
 Copy-Item -LiteralPath "$root/sources.lock.json" -Destination $docs
-Copy-Item -LiteralPath "$root/sources/KasaClient/KasaClient.Tests/LiveTestSettings.sample.json" -Destination $docs
+Copy-Item -LiteralPath "$root/release-packages.json" -Destination $docs
+foreach ($file in $config.documentation) {
+    Copy-Item -LiteralPath "$root/sources/$($file.source)/$($file.path)" -Destination "$docs/$($file.target)"
+}
+# Preserve paths used by the source READMEs inside the documentation archive.
+$packageDocs = Join-Path $docs "packages/$Package"
+[IO.Directory]::CreateDirectory($packageDocs) | Out-Null
+foreach ($file in @('README.md', 'RELEASE-NOTES.md', 'THIRD-PARTY-NOTICES.md')) {
+    if (Test-Path "$projectDirectory/$file") { Copy-Item -LiteralPath "$projectDirectory/$file" -Destination $packageDocs }
+}
+if (Test-Path "$projectDirectory/licenses") { Copy-Item -LiteralPath "$projectDirectory/licenses" -Destination $packageDocs -Recurse }
+Copy-Item -LiteralPath "$root/THIRD-PARTY-NOTICES.md" -Destination $docs
+Copy-Item -LiteralPath "$root/licenses" -Destination $docs -Recurse
 [IO.Compression.ZipFile]::CreateFromDirectory($docs, "$release/$Package-Documentation.zip")
 foreach ($archive in @(Get-ChildItem $release -File | Where-Object Extension -In '.pkg', '.zip')) {
     $zip = [IO.Compression.ZipFile]::OpenRead($archive.FullName)

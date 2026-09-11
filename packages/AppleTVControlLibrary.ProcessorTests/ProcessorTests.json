@@ -1,0 +1,20 @@
+{
+  "Name": "AppleTVControlLibrary Tests",
+  "Port": 0,
+  "Suites": [
+    {
+      "Id": "appletv",
+      "Name": "AppleTVControlLibrary Tests — Unit Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^(AppleTV\\.Companion\\.Tests|AppleTv\\.Hap\\.Tests|AppleTv\\.Mrp\\.Tests|AppleTvControlLibrary\\.Mrp\\.Tests)($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
+      "ManualOnly": false,
+      "ExpectedCount": 229
+    },
+    {
+      "Id": "appletv-network",
+      "Name": "AppleTVControlLibrary Tests — Socket Discovery",
+      "FilterXml": "<filter><and><namespace re='1'>^AppleTvControlLibrary\\.LiveTests($|[.])</namespace><cat>Live</cat></and></filter>",
+      "ManualOnly": true,
+      "ExpectedCount": 5
+    }
+  ]
+}

@@ -18,6 +18,8 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 
 | Package in Configure | Project | Suites and configuration |
 | --- | --- | --- |
+| **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md): 229 unit tests and 5 optional socket discovery tests |
+| **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md): 99 deterministic unit tests |
 | **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md): unit tests and optional live-device tests |
 
 Each package has its own guide, release notes, manifest identity and version. Add new packages to this table; their test counts, device requirements and settings belong in their package guides.
@@ -93,7 +95,7 @@ Test packages are **GitHub release assets, not NuGet packages**. Their versions 
 3. Use `sources/CrestronHomeNUnit/New-ProcessorTestProject.ps1` with the original test project under `sources`, an output directory under `packages`, and `-Solution ./CrestronHomeLibraryTests.sln`. Give the package a distinct identity and keep its **Utility** device type.
 4. Add the library and test projects to the solution's Libraries folder, using their paths under `sources`. Configure suite filters, expected counts and manual-only suites in the package's `ProcessorTests.json`.
 5. Write the package's `README.md`, `RELEASE-NOTES.md`, placeholder inputs and dependency notices. Add it to the available-packages table above. Keep all fixture source, messages and documentation in the library repository independent of Crestron.
-6. Add the package to the release workflow choices and extend `Build-TestRelease.ps1` and `Validate-Tests.ps1` with its validation, expected discovery count and documentation assets. Each new package must have explicit release validation; adding a project alone does not enable its publication.
+6. Add the package to the release workflow choices and add an entry to `release-packages.json` with its desktop test projects/frameworks, expected discovery count and documentation assets. Each new package must have explicit release validation; adding a project alone does not enable its publication.
 7. Build and run the package on a processor before its first release. Record updated source pins and release only that package, under its own version.
 
 ## License and non-association

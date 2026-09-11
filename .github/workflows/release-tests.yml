@@ -16,6 +16,8 @@ on:
         type: choice
         options:
           - KasaClient.ProcessorTests
+          - TeslaPowerwallLibrary.ProcessorTests
+          - AppleTVControlLibrary.ProcessorTests
 
 permissions:
   contents: write
@@ -51,6 +53,8 @@ jobs:
         run: |
           if ($env:GITHUB_REF -ne 'refs/heads/main') { throw 'Run test releases from main.' }
           if ($env:TEST_VERSION -notmatch '^\d+\.\d+\.\d+$') { throw 'Use major.minor.patch.' }
+          $config = ./Get-ReleasePackage.ps1 -Package $env:TEST_PACKAGE
+          "TEST_DISPLAY_NAME=$($config.displayName)" >> $env:GITHUB_ENV
           $tag = "$env:TEST_PACKAGE-v$env:TEST_VERSION"
           git show-ref --verify --quiet "refs/tags/$tag"
           if ($LASTEXITCODE -eq 0) { throw "Tag $tag already exists." }
@@ -86,7 +90,7 @@ jobs:
       - name: Push test version and annotated tag
         shell: pwsh
         run: |
-          git tag -a $env:TEST_TAG -m "KasaTapoClient Tests $env:TEST_VERSION"
+          git tag -a $env:TEST_TAG -m "$env:TEST_DISPLAY_NAME $env:TEST_VERSION"
           if ($LASTEXITCODE -ne 0) { throw 'Test tag creation failed.' }
           git push --atomic origin HEAD:refs/heads/main "refs/tags/$env:TEST_TAG"
           if ($LASTEXITCODE -ne 0) { throw 'Release push failed; main may have advanced.' }
@@ -94,5 +98,5 @@ jobs:
         shell: pwsh
         run: |
           $assets = @(Get-ChildItem artifacts/release -File | Select-Object -ExpandProperty FullName)
-          gh release create $env:TEST_TAG @assets --verify-tag --title "KasaTapoClient Tests v$env:TEST_VERSION" --notes-file "$env:TEST_PROJECT_DIRECTORY/RELEASE-NOTES.md"
+          gh release create $env:TEST_TAG @assets --verify-tag --title "$env:TEST_DISPLAY_NAME v$env:TEST_VERSION" --notes-file "$env:TEST_PROJECT_DIRECTORY/RELEASE-NOTES.md"
           if ($LASTEXITCODE -ne 0) { throw 'Test release creation failed.' }

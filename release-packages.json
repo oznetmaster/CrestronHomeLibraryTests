@@ -1,0 +1,69 @@
+{
+  "KasaClient.ProcessorTests": {
+    "displayName": "KasaTapoClient Tests",
+    "expectedCount": 104,
+    "tests": [
+      {
+        "source": "KasaClient",
+        "project": "KasaClient.Tests/KasaClient.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [
+      {
+        "source": "KasaClient",
+        "path": "KasaClient.Tests/LiveTestSettings.sample.json",
+        "target": "LiveTestSettings.sample.json"
+      }
+    ]
+  },
+  "TeslaPowerwallLibrary.ProcessorTests": {
+    "displayName": "TeslaPowerwallLibrary Tests",
+    "expectedCount": 99,
+    "tests": [
+      {
+        "source": "TeslaPowerwallLibrary",
+        "project": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": []
+  },
+  "AppleTVControlLibrary.ProcessorTests": {
+    "displayName": "AppleTVControlLibrary Tests",
+    "expectedCount": 234,
+    "tests": [
+      {
+        "source": "AppleTVControlLibrary",
+        "project": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      },
+      {
+        "source": "AppleTVControlLibrary",
+        "project": "tests/AppleTv.Hap.Tests/AppleTv.Hap.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      },
+      {
+        "source": "AppleTVControlLibrary",
+        "project": "tests/AppleTv.Mrp.Tests/AppleTv.Mrp.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": []
+  }
+}

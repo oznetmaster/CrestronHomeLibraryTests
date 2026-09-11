@@ -12,6 +12,18 @@
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
       "revision": "5c617228df20161f7c4dd7539ac5aca4fcae9e73",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
+    },
+    {
+      "name": "TeslaPowerwallLibrary",
+      "repository": "https://github.com/oznetmaster/TeslaPowerwallLibrary.git",
+      "revision": "fd384e9d4668d05310479ae0aa94d51b1d39a23e",
+      "requiredProject": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj"
+    },
+    {
+      "name": "AppleTVControlLibrary",
+      "repository": "https://github.com/oznetmaster/AppleTVControlLibrary.git",
+      "revision": "5de886284cda4a6dd72ea6429189ce930470b41a",
+      "requiredProject": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj"
     }
   ]
 }
