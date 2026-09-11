@@ -17,3 +17,13 @@ For this suite, supply `LiveTestSettings.json` to the Live Tests suite. The runn
 Build the latest Windows runner before connecting. After deployment and activation, `PrepareRunner.ps1` imports deployment credentials into Windows-protected local storage. Select **Find packages** and choose this package. It connects automatically when processor credentials are available; otherwise enter the SFTP username and password and use **Connect**. The suite list becomes available after connection.
 
 The package validator discovers every suite, but its optional `--run-twice` check executes only suites whose `ManualOnly` property is false. Do not remove that property from hardware or other opt-in suites.
+
+## Kasa-specific live validation
+
+The package includes 97 deterministic unit tests and seven live test placeholders; configuration can expand live cases for multiple devices. Prefer stable device IDs or unique discovery aliases in private settings so the fixture resolves the current address at execution time.
+
+Discovery results are shared within one run and reset for the next run. Progress reports discovery, connection, action and restoration timings. Tests that change a device capture its current state and restore it in `finally`, including after failed assertions. Restoration is refreshed and checked; a restoration failure fails the test.
+
+Set `observationDelayMilliseconds` to `0` to omit deliberate observation pauses. Configure `temperatureChildDeviceId` on a hub entry for a read-only T310/T315 temperature check. The `Unattended` category allows selecting it separately from tests that operate devices. This refreshes the hub's reported reading; it does not prove the sensor transmitted a new sample between requests.
+
+Use the public [sample settings](https://github.com/oznetmaster/KasaTapoClient/blob/main/KasaClient.Tests/LiveTestSettings.sample.json) to create your private `LiveTestSettings.json`. The library [test documentation](https://github.com/oznetmaster/KasaTapoClient#testing-and-benchmark-scaffolding) describes all device selectors and options. Never commit real settings or attach live results to a release.

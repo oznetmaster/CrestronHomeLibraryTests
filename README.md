@@ -1,83 +1,100 @@
 # Crestron Home library tests
 
-One Visual Studio solution for processor test packages for platform-independent libraries. Each library owns its original NUnit fixtures. This repository owns only Crestron package projects, suite manifests and package-specific UI. The runner, host and packaging tools remain in CrestronHomeNUnit. Crestron driver repositories can keep their own processor test projects in their driver solutions.
+Processor test packages for platform-independent .NET libraries, in one Visual Studio solution. Each library keeps its NUnit fixtures in its own repository. This repository contains only the Crestron Home package projects, suite definitions and package UI. Crestron-specific drivers can keep processor test projects in their own driver repositories.
 
-## Local Visual Studio setup
+The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit](https://github.com/oznetmaster/CrestronHomeNUnit). All processor test projects target **net472** and use the official NUnit framework.
 
-With the existing KasaClient and CrestronHomeNUnit checkouts beside this repository, run in PowerShell 7:
+## Contents
+
+- [Available packages](#available-packages)
+- [Install and run](#install-and-run)
+- [Build with Visual Studio](#build-with-visual-studio)
+- [Private settings and library solution views](#private-settings-and-library-solution-views)
+- [Reproducible builds and releases](#reproducible-builds-and-releases)
+- [Add another package](#add-another-package)
+- [License and non-association](#license-and-non-association)
+
+## Available packages
+
+| Package in Configure | Project | Suites and configuration |
+| --- | --- | --- |
+| **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md): unit tests and optional live-device tests |
+
+Each package has its own guide, release notes, manifest identity and version. Add new packages to this table; their test counts, device requirements and settings belong in their package guides.
+
+## Install and run
+
+Download the chosen `.pkg` from [GitHub Releases](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases) and the [Windows runner](https://github.com/oznetmaster/CrestronHomeNUnit/releases). Every package includes its own NUnit host; the separate NUnit framework self-test package is optional.
+
+All processor test packages appear in **Utility → Neil Colvin → package name** in **Crestron Home Configure**. Add the package to a room. Multiple packages can coexist; each advertises its automatically assigned TCP port through mDNS.
+
+In the Windows runner, use **Find packages**, select a package, authenticate with that processor's credentials, and choose a suite. You can discover tests, run all tests in the selected suite, or run a selection. The package's standalone Home tile exposes its automatic suites and reports results and its current port. Suites marked manual-only, including live-device tests, require explicit selection in the Windows runner.
+
+Use **Test inputs…** to supply a suite's private configuration. The package guide identifies required filenames and supported NUnit parameters. The runner transfers inputs separately from the package; they are never compiled into release assets. **Use at next restart** restores selections without running tests. See the [host user guide](https://github.com/oznetmaster/CrestronHomeNUnit/blob/main/docs/UserGuide.md) for complete runner and tile behavior.
+
+## Build with Visual Studio
+
+Install Visual Studio with .NET desktop development and .NET Framework 4.7.2 targeting support, the SDK listed in `global.json`, PowerShell 7, the Crestron Driver SDK and dotnet-ilrepack 2.0.45. Follow the shared host's build instructions for SDK paths.
+
+For local development, keep the source checkouts named in `sources.lock.json` and the `CrestronHomeNUnit` checkout beside this repository, then run:
 
 ```powershell
 ./Initialize-Sources.ps1 -UseLocalSources
 ```
 
-Use `-LocalProjectsRoot` if those checkouts are elsewhere. Setup creates Windows directory junctions under `sources`; these are links to the original repositories, not fixture copies. Setup never replaces an existing source directory. Each repository retains its own Git history and working changes. Source links and fetched source trees are excluded from the collection's Git contents.
+Use `-LocalProjectsRoot` when they are elsewhere. Setup creates Windows directory junctions under `sources`, pointing to the original repositories. It never replaces existing source directories. Editing a linked project edits its original checkout; each repository retains its own Git history. Source checkouts and links are excluded from this repository.
 
-Open **CrestronHomeLibraryTests.sln**. The solution includes the Kasa library, its NUnit test project, the Windows runner and the Kasa processor package. Editing a linked project edits its original checkout. Test Explorer runs the normal desktop tests. The Kasa library's own solution has no processor package reference.
+Open **CrestronHomeLibraryTests.sln**. Build the desired processor test project in Debug, such as **KasaClient.ProcessorTests**. Its package is written to `packages/<project>/bin/Debug/net472/<project>.pkg`. Build **CrestronHomeNUnit.Runner** to update the Windows application, and select it as the startup project to launch it with F5. Test Explorer runs the libraries' ordinary desktop NUnit tests.
 
-Build **KasaClient.ProcessorTests** to make the self-contained processor package. Build **CrestronHomeNUnit.Runner** to update the Windows application. Set the runner as the startup project to launch it with F5. There is no separate host package to deploy for Kasa.
-
-The package is at `packages/KasaClient.ProcessorTests/bin/Debug/net472/KasaClient.ProcessorTests.pkg`. Existing package identity and version numbering are preserved. Debug package builds increment the build number. Release version increments remain limited to CI. SFTP deployment still uses the package's local `.csproj.user`, and runs only for Debug builds inside Visual Studio when enabled there. Local settings and credentials belong in `.git/info/exclude`; setup installs those exclusions, with no private-settings entries in tracked `.gitignore`.
-
-Required build tools are Visual Studio with .NET desktop development and .NET Framework 4.7.2 targeting support, .NET SDK as specified in global.json, PowerShell 7, Crestron Driver SDK, and dotnet-ilrepack 2.0.45. Use the shared host's packaging instructions for SDK installation and path overrides.
-
-For a command-line package build without deployment:
+Debug package builds increment the build number and can automatically deploy through SFTP when enabled in that project's private settings. Release version increments occur only in CI. Command-line builds do not deploy:
 
 ```powershell
-./Build.ps1
+./Build.ps1 -Package KasaClient.ProcessorTests
 ```
 
-## Private library solution view
+## Private settings and library solution views
 
-Run `./New-LocalLibrarySolution.ps1` to create `KasaClient.Local.slnx` beside the original Kasa solution. It contains the existing Kasa projects plus the external processor package. The file is excluded in that library repository using `.git/info/exclude` before it is written; the tracked solution remains untouched. Open the local view and build KasaClient.ProcessorTests to build and deploy with the same local settings as the collection solution. Regenerate with `-Force` after changing the original solution. Parameters support other source names, .slnx solution filenames and package names.
+Deployment credentials, machine paths, `.csproj.user`, `*.Local.targets`, runner settings and real live-test configuration belong in local `.git/info/exclude`, not the tracked `.gitignore`. Source setup installs the standard local exclusions. Publish only placeholder samples. Never include private configuration or live-test output in commits or releases.
 
-## Public and reproducible source builds
+The original library solutions remain independent of Crestron. For an optional local solution that also builds a processor package, use the helper with the source name, original solution and package:
 
-`sources.lock.json` records the public URL and exact source commit for each dependency. A fresh release checkout uses real clones at those commits in the same `sources` locations; the solution and project paths do not change. No tests are copied into this repository or published as a separate test-only NuGet package.
+```powershell
+./New-LocalLibrarySolution.ps1 -Source KasaClient -SolutionFile KasaClient.slnx -Package KasaClient.ProcessorTests
+```
 
-The lock file pins the published NUnit test sources and Crestron Home NUnit SDK. To update a package, commit and push its library tests first, then record the clean source revisions:
+This example creates `KasaClient.Local.slnx` beside the library's original solution and excludes it before writing it. It includes the library projects and external processor test project. Regenerate with `-Force` after changing the original solution. Build the test package there using the same private deployment settings as the collection solution.
+
+## Reproducible builds and releases
+
+`sources.lock.json` records exact public repository URLs and commit IDs for the libraries and host SDK. Commit and push test changes in the original library first, then update the clean source pins in this repository:
 
 ```powershell
 ./Update-SourceLock.ps1 -Name KasaClient
-./Update-SourceLock.ps1 -Name CrestronHomeNUnit -Repository https://github.com/oznetmaster/CrestronHomeNUnit.git
+./Update-SourceLock.ps1 -Name CrestronHomeNUnit
 ```
 
-Commit the lock file in this repository. From a fresh checkout, run:
+From a fresh checkout, fetch pinned sources and build a Release package:
 
 ```powershell
 ./Initialize-Sources.ps1
-./Build.ps1 -Configuration Release -LockedSources
+./Build.ps1 -Package KasaClient.ProcessorTests -Configuration Release -LockedSources
 ```
 
-Locked setup refuses missing pins, local junctions, changed source revisions and dirty checkouts. It leaves existing sources untouched on mismatch. Use a separate checkout for releases rather than changing the links used by an open Visual Studio solution. CI should use this same locked build on a Windows machine with the required Crestron SDK and tooling. Build.ps1 writes a `.sources.json` beside the package identifying the input revisions and whether local changes were present. Release the `.pkg` and source record from this collection repository. Each package retains its own manifest version. Processor packages are GitHub release assets, not NuGet packages; the processor and test projects remain non-packable.
+Locked builds require real source checkouts and reject local junctions, wrong commits or dirty sources. Use a separate checkout for releases; existing Visual Studio links are left untouched. Builds write a `.sources.json` beside the package describing their source revisions.
 
-## Adding a library
+For publication, run **Release processor tests** on `main`, select a supported package and enter its independent version, such as `1.0.0`. Tags follow `<project>-v<version>`, for example `KasaClient.ProcessorTests-v1.0.0`. CI prepares that package's version, validates desktop tests and packaged discovery, and publishes its `.pkg`, source record, documentation and SHA-256 checksums. Live tests never execute in CI. Processor runtime validation is a separate hardware step.
 
-1. Add an entry to `sources.lock.json` with its local checkout directory name, public repository URL, required test project and, when ready, source commit.
-2. Run local source setup, then use `sources/CrestronHomeNUnit/New-ProcessorTestProject.ps1` with the test project under `sources`, an output directory under `packages`, and `-Solution ./CrestronHomeLibraryTests.sln`.
-3. Add the original library and test projects under the solution's Libraries folder using Visual Studio's **Add Existing Project**, or `dotnet sln add --solution-folder Libraries`. Keep their paths under `sources`.
-4. Configure suite filters and test counts in the new package's ProcessorTests.json. Build and validate the package before recording its source revisions for release.
+Test packages are **GitHub release assets, not NuGet packages**. Their versions are independent of the libraries' NuGet versions. Updating tests does not require publishing a library again.
 
-The tests may use ordinary NUnit categories and parameters such as `TestDataDirectory` and `EnableLiveTests`. Their source code, messages and documentation stay independent of Crestron. Device settings are supplied through the Windows runner's **Test inputs**. Live tests run only when explicitly selected in that runner; the supplied parameter overrides the JSON enable flag for that operation without changing the input file.
+## Add another package
 
-
-Prefer stable device IDs or unique discovery aliases in private Kasa live settings; the fixtures resolve current addresses at execution time. Never publish real configuration or live-test output. The runner's **Use at next restart** option saves the current package, suite and test selection outside the repositories and restores it without running tests. Credentials stay in the existing protected store.
-
-The Kasa package includes 97 unit tests and seven live test placeholders. Live discovery is shared within each run and starts fresh for the next run. Progress reports discovery, connection, action and restoration timings. Private settings can use "observationDelayMilliseconds": 0 to omit observation pauses. Configure the hub's temperatureChildDeviceId for the read-only T310/T315 temperature test; its Unattended category allows selecting it separately from tests that operate devices.
-
-Processor test packages declare the supported Utility device type so they can be found under that category in Crestron Home Setup. New packages generated by the shared SDK use the same category.
-
-
-## Download and run
-
-Download a `.pkg` from [GitHub Releases](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases) and the Windows runner from [Crestron Home NUnit](https://github.com/oznetmaster/CrestronHomeNUnit/releases). Each package contains its own NUnit host; installing the separate NUnit self-test package is optional.
-
-All processor test packages appear in **Utility → Neil Colvin → package name** in Crestron Home Configure. The first package is **KasaTapoClient Tests**. Add it to a room, then use **Find packages** in the Windows runner and select it. The standalone Home tile runs the automatic unit suite and reports results and the assigned port. Live suites are available only through explicit selection in the Windows runner. See the [KasaTapoClient package guide](packages/KasaClient.ProcessorTests/README.md) for private inputs and live-device setup.
-
-## GitHub releases
-
-Run the **Release processor tests** workflow on `main`, choosing the package and its independent version, such as `1.0.0`. Tags use `KasaClient.ProcessorTests-v1.0.0`; future packages use their own project name and version. CI prepares the package version, builds from the locked sources, validates discovery and deterministic desktop tests, and publishes the `.pkg`, source revision record, documentation and SHA-256 checksums. No NuGet publishing occurs. Live hardware tests never run in CI. Processor execution remains a separate validation step on real hardware.
-
-The library's NuGet version is independent of the processor test package version. Updating fixtures does not require publishing the library again. Keep each package's release notes in its project folder. Before publishing a new package, add its supported project name to the workflow choices and provide its desktop validation command in `Validate-Tests.ps1`.
+1. Keep or convert its shared fixtures to NUnit in the original library repository, with ordinary desktop validation. Commit and publish those changes there.
+2. Add the library to `sources.lock.json`, including its checkout name, public URL, required test project and exact commit. Run source setup.
+3. Use `sources/CrestronHomeNUnit/New-ProcessorTestProject.ps1` with the original test project under `sources`, an output directory under `packages`, and `-Solution ./CrestronHomeLibraryTests.sln`. Give the package a distinct identity and keep its **Utility** device type.
+4. Add the library and test projects to the solution's Libraries folder, using their paths under `sources`. Configure suite filters, expected counts and manual-only suites in the package's `ProcessorTests.json`.
+5. Write the package's `README.md`, `RELEASE-NOTES.md`, placeholder inputs and dependency notices. Add it to the available-packages table above. Keep all fixture source, messages and documentation in the library repository independent of Crestron.
+6. Add the package to the release workflow choices and extend `Build-TestRelease.ps1` and `Validate-Tests.ps1` with its validation, expected discovery count and documentation assets. Each new package must have explicit release validation; adding a project alone does not enable its publication.
+7. Build and run the package on a processor before its first release. Record updated source pins and release only that package, under its own version.
 
 ## License and non-association
 
