@@ -1,0 +1,22 @@
+{
+  "SchemaVersion": "2.0",
+  "GeneralInformation": {
+    "MinSdkVersion": "27.0000.0000",
+    "Guid": "a7858c52-aac8-45bc-afac-704f8a0103e9",
+    "DeviceType": "Utility",
+    "Manufacturer": "Neil Colvin",
+    "BaseModel": "KasaTapoClient Tests",
+    "OtherSupportedModels": [],
+    "SupportedSeries": [],
+    "DependencyGroup": "",
+    "Developer": {
+      "Company": "Neil Colvin",
+      "Contact": "Neil Colvin",
+      "Email": "",
+      "Website": "",
+      "PhoneNumber": ""
+    },
+    "DriverVersion": "0.1.000.0017",
+    "VersionDate": "2026-09-11 07:18:05.051"
+  }
+}

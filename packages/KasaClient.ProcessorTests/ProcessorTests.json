@@ -1,0 +1,20 @@
+{
+  "Port": 0,
+  "Suites": [
+    {
+      "Id": "kasatapoclient",
+      "Name": "KasaTapoClient Tests — Unit Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^KasaClient\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
+      "ManualOnly": false,
+      "ExpectedCount": 97
+    },
+    {
+      "Id": "kasatapoclient-live",
+      "Name": "KasaTapoClient Tests — Live Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^KasaClient\\.Tests($|[.])</namespace><cat>Live</cat></and></filter>",
+      "ManualOnly": true,
+      "ExpectedCount": 0
+    }
+  ],
+  "Name": "KasaTapoClient Tests"
+}

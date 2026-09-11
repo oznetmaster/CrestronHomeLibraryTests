@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "name": "KasaClient",
+      "repository": "https://github.com/oznetmaster/KasaTapoClient.git",
+      "revision": "c6a420595abaaab73f08c707e3fb18df3b83c01d",
+      "requiredProject": "KasaClient.Tests/KasaClient.Tests.csproj"
+    },
+    {
+      "name": "CrestronHomeNUnit",
+      "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
+      "revision": "5c617228df20161f7c4dd7539ac5aca4fcae9e73",
+      "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
+    }
+  ]
+}
