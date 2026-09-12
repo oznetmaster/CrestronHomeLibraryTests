@@ -26,9 +26,9 @@ The six live checks authenticate with the saved local token, read gateways, setu
 
 ## Sources and release status
 
-Version **1.0.0** uses the publicly pinned OverkizClient source commit `be1ccdbba8a2dc402b079e1b8668d5e4bd9c2432` and the CrestronHomeNUnit **v1.0.1** SDK at `d93527c2d5c3a39a59dc9ce897005c9e5eb06892`. The source revision includes response-model and live-fixture changes after the library's NuGet v1.1.5 release. `sources.lock.json` and the release provenance asset record the exact build inputs; this package does not require a new library NuGet release.
+Version **1.0.1** uses the released **OverkizClient v1.2.0** source commit `1adfd371003a0c0b85330cf0a14ed63c117e807b` and the CrestronHomeNUnit **v1.0.1** SDK at `d93527c2d5c3a39a59dc9ce897005c9e5eb06892`. `sources.lock.json` and the release provenance asset record the exact build inputs. Library and processor-package versions are independent.
 
-Download the `.pkg` from [OverkizClient Tests v1.0.0](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.0). The release manifest version is **1.0.000.0000**; local Debug builds use increasing build numbers. Package releases use independent tags `OverkizClient.ProcessorTests-v<version>` and are not published to NuGet.
+Download the `.pkg` from [OverkizClient Tests v1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1). The release manifest version is **1.0.001.0000**; local Debug builds use increasing build numbers. Package releases use independent tags `OverkizClient.ProcessorTests-v<version>` and are not published to NuGet. The library itself is available separately as OverkizClient 1.2.0 on NuGet.
 
 Deployment credentials, real live settings and machine paths are private and excluded through `.git/info/exclude`. They are not included in packages or release assets. See the collection README for Crestron trademark/non-association notices and [third-party notices](THIRD-PARTY-NOTICES.md) for retained dependency licenses.
 

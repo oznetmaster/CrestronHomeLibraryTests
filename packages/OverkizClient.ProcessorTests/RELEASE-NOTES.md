@@ -1,6 +1,6 @@
-# OverkizClient Tests v1.0.0
+# OverkizClient Tests v1.0.1
 
-First public processor test package for OverkizClient, targeting **net472** and using official NUnit **4.6.1**.
+Updates the processor test package to the released **OverkizClient v1.2.0** source, targeting **net472** and using official NUnit **4.6.1**.
 
 ## Included suites
 
@@ -9,7 +9,7 @@ First public processor test package for OverkizClient, targeting **net472** and 
 
 ## Install and use
 
-Upload **OverkizClient.ProcessorTests.pkg** to the processor's `/user/ThirdPartyDrivers/Import` folder and add **Utility → Neil Colvin → OverkizClient Tests** in Configure. Release manifest version: **1.0.000.0000**.
+Upload **OverkizClient.ProcessorTests.pkg** to the processor's `/user/ThirdPartyDrivers/Import` folder and add **Utility → Neil Colvin → OverkizClient Tests** in Configure. Release manifest version: **1.0.001.0000**.
 
 The package is self-contained; no separate NUnit Test Host is needed. Its standalone tile exposes offline testing and the current TCP port. The Windows runner discovers the package through mDNS and provides separate Unit and Live suites. Use the current runner, **v1.0.1**, for automatic reconnection after endpoint changes.
 
@@ -17,10 +17,10 @@ For live checks, select the Live suite and use **Test inputs…** to supply the 
 
 ## Sources and validation
 
-- OverkizClient source: `be1ccdbba8a2dc402b079e1b8668d5e4bd9c2432`, including the response models and live tests added after NuGet v1.1.5.
+- OverkizClient **v1.2.0** source: `1adfd371003a0c0b85330cf0a14ed63c117e807b`, containing the response models and live tests. Compared with processor package v1.0.0, the library version metadata and pinned revision are updated; fixture behavior is unchanged.
 - Shared processor SDK: CrestronHomeNUnit v1.0.1, `d93527c2d5c3a39a59dc9ce897005c9e5eb06892`. Includes private resource-helper and anonymous-type merge corrections.
 - 233 offline tests passed on both desktop target frameworks. The packaged assembly passed all 233 offline tests twice locally.
 - On 2026-09-12, development processor package 1.0.000.0005 passed **233 offline tests and all six live checks**, with zero failures or skips. Live checks depend on the configured gateway and local network.
 - Release CI validates pinned sources, desktop tests, all 239 discovered cases and repeated execution of the 233 packaged automatic tests. CI does not run live gateway tests.
 
-Assets include the installable `.pkg`, documentation/licenses, exact source provenance and SHA-256 checksums. This is an independent test-package release; no NuGet package is published.
+Assets include the installable `.pkg`, documentation/licenses, exact source provenance and SHA-256 checksums. The processor package is released only on GitHub. OverkizClient v1.2.0 is released separately on GitHub and NuGet; this workflow does not publish another NuGet package.

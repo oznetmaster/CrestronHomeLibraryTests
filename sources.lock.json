@@ -28,7 +28,7 @@
     {
       "name": "OverkizClient",
       "repository": "https://github.com/oznetmaster/OverkizClient.git",
-      "revision": "be1ccdbba8a2dc402b079e1b8668d5e4bd9c2432",
+      "revision": "1adfd371003a0c0b85330cf0a14ed63c117e807b",
       "requiredProject": "OverKizApi.Tests/OverKizApi.Tests.csproj"
     }
   ]
