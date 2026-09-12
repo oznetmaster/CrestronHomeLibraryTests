@@ -20,6 +20,7 @@ on:
           - AppleTVControlLibrary.ProcessorTests
           - OverkizClient.ProcessorTests
           - WiserHeatAPIv2.ProcessorTests
+          - SimpleWeather.ProcessorTests
 
 permissions:
   contents: write

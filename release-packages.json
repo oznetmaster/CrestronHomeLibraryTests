@@ -109,5 +109,27 @@
         "target": "LiveTestSettings.example.json"
       }
     ]
+  },
+  "SimpleWeather.ProcessorTests": {
+    "displayName": "SimpleWeatherClient Tests",
+    "expectedCount": 121,
+    "expectedAutomaticCount": 117,
+    "tests": [
+      {
+        "source": "SimpleWeather",
+        "project": "SimpleWeather.Tests/SimpleWeather.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [
+      {
+        "source": "SimpleWeather",
+        "path": "SimpleWeather.Tests/LiveTestSettings.example.json",
+        "target": "LiveTestSettings.example.json"
+      }
+    ]
   }
 }

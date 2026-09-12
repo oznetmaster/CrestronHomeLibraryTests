@@ -19,6 +19,7 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 | Package in Configure | Project | Suites and configuration |
 | --- | --- | --- |
 | **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md): 229 unit tests and 5 optional socket discovery tests |
+| **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md): 117 unit tests and 4 opt-in live OpenWeather tests; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.0); all 121 tests validated on a processor |
 | **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md): 138 unit tests, 7 read-only live tests, and 2 explicitly selected room-control tests |
 | **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md): 233 offline tests and 6 opt-in local API tests; [v1.0.1 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1) |
 | **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md): 99 deterministic unit tests |

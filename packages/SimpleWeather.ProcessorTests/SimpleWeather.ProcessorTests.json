@@ -1,0 +1,22 @@
+{
+  "SchemaVersion": "2.0",
+  "GeneralInformation": {
+    "MinSdkVersion": "27.0000.0000",
+    "Guid": "fa445faf-ae11-4b45-b3a0-d8a2c1aba1d9",
+    "DeviceType": "Utility",
+    "Manufacturer": "Neil Colvin",
+    "BaseModel": "SimpleWeatherClient Tests",
+    "OtherSupportedModels": [],
+    "SupportedSeries": [],
+    "DependencyGroup": "",
+    "Developer": {
+      "Company": "Neil Colvin",
+      "Contact": "Neil Colvin",
+      "Email": "",
+      "Website": "",
+      "PhoneNumber": ""
+    },
+    "DriverVersion": "1.0.000.0005",
+    "VersionDate": "2026-09-12 10:00:55.174"
+  }
+}
