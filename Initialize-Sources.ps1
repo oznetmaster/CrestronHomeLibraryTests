@@ -3,12 +3,22 @@
 
 param(
     [switch] $UseLocalSources,
-    [string] $LocalProjectsRoot = (Split-Path -Parent $PSScriptRoot)
+    [string] $LocalProjectsRoot = (Split-Path -Parent $PSScriptRoot),
+    [hashtable] $LocalSourcePaths = @{}
 )
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $lock = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'sources.lock.json') -Raw | ConvertFrom-Json
 $sourceDirectory = Join-Path $PSScriptRoot 'sources'
+function Get-LocalSourcePath([string] $Name) {
+    if ($LocalSourcePaths.ContainsKey($Name)) { return [IO.Path]::GetFullPath([string]$LocalSourcePaths[$Name]) }
+    $existing = Join-Path $sourceDirectory $Name
+    if (Test-Path -LiteralPath $existing) {
+        $item = Get-Item -LiteralPath $existing -Force
+        if ($item.LinkType -eq 'Junction') { return [IO.Path]::GetFullPath([string]$item.Target) }
+    }
+    return Join-Path $LocalProjectsRoot $Name
+}
 
 # Private settings are excluded locally, never added to the tracked ignore file.
 $exclude = & git -C $PSScriptRoot rev-parse --path-format=absolute --git-path info/exclude
@@ -23,7 +33,7 @@ foreach ($pattern in @('**/*.csproj.user', '**/*.Local.targets', '**/Runner.loca
 foreach ($source in $lock.sources) {
     if ($source.name -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid source directory name in sources.lock.json.' }
     if ($UseLocalSources) {
-        $localPath = Join-Path $LocalProjectsRoot $source.name
+        $localPath = Get-LocalSourcePath $source.name
         if (!(Test-Path -LiteralPath (Join-Path $localPath $source.requiredProject))) { throw "Required project is missing in $localPath." }
     } elseif ($source.revision -notmatch '^[0-9a-f]{40}$' -or $source.repository -notmatch '^https://[^/@]+/[^?#]+$') {
         throw "Source '$($source.name)' is not pinned for public builds. Commit and publish its required changes, then run Update-SourceLock.ps1. For existing local checkouts, use -UseLocalSources."
@@ -33,7 +43,7 @@ foreach ($source in $lock.sources) {
 foreach ($source in $lock.sources) {
     $destination = Join-Path $sourceDirectory $source.name
     if ($UseLocalSources) {
-        $localPath = [IO.Path]::GetFullPath((Join-Path $LocalProjectsRoot $source.name))
+        $localPath = [IO.Path]::GetFullPath((Get-LocalSourcePath $source.name))
         if (Test-Path -LiteralPath $destination) {
             $item = Get-Item -LiteralPath $destination -Force
             if ($item.LinkType -ne 'Junction' -or [IO.Path]::GetFullPath([string]$item.Target) -ne $localPath) {

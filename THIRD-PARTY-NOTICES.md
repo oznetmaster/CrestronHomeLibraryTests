@@ -2,6 +2,7 @@
 
 Copyright and license terms for dependencies remain independent of this repository's MIT with Commons Clause license. Merging assemblies and renaming compatibility types does not change those terms.
 
+- **WeatherLinkLiveLibrary and its tests** — Neil Colvin, MIT. See [package notices](packages/WeatherLinkLiveLibrary.ProcessorTests/THIRD-PARTY-NOTICES.md) and retained licenses.
 - **SimpleWeatherClient and its tests** — Ivan Gechev and Neil Colvin, MIT. See [package notices](packages/SimpleWeather.ProcessorTests/THIRD-PARTY-NOTICES.md) and retained library/dependency licenses.
 - **WiserHeatAPIv2 and its tests** — Copyright © 2026 Neil Colvin, MIT. See [package notices](packages/WiserHeatAPIv2.ProcessorTests/THIRD-PARTY-NOTICES.md) and its `licenses` directory for WiserHeatAPIv2, YamlDotNet, libyaml and additional dependency licenses.
 - **TeslaPowerwallLibrary and AppleTVControlLibrary** — see their package-specific `THIRD-PARTY-NOTICES.md` and `licenses` directories for library licenses and additional dependencies.

@@ -42,6 +42,12 @@
       "repository": "https://github.com/oznetmaster/SimpleWeatherClient.git",
       "revision": "e629d5ab35f41f7a4d493bfb520b4ac0683cead2",
       "requiredProject": "SimpleWeather.Tests/SimpleWeather.Tests.csproj"
+    },
+    {
+      "name": "WeatherLinkLiveLibrary",
+      "repository": "https://github.com/oznetmaster/WeatherLinkLiveLibrary.git",
+      "revision": "852d3dbc710d003cf97f65420919d4b004faac0b",
+      "requiredProject": "WeatherLinkLive.Tests/WeatherLinkLive.Tests.csproj"
     }
   ]
 }

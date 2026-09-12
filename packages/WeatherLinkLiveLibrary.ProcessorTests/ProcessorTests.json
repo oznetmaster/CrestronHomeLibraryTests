@@ -1,0 +1,20 @@
+{
+  "Name": "WeatherLinkLiveLibrary Tests",
+  "Port": 0,
+  "Suites": [
+    {
+      "Id": "weatherlink",
+      "Name": "WeatherLinkLiveLibrary Tests — Unit Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^WeatherLinkLive[.]Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
+      "ManualOnly": false,
+      "ExpectedCount": 127
+    },
+    {
+      "Id": "weatherlink-live",
+      "Name": "WeatherLinkLiveLibrary Tests — Live Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^WeatherLinkLive[.]Tests($|[.])</namespace><cat>Live</cat></and></filter>",
+      "ManualOnly": true,
+      "ExpectedCount": 3
+    }
+  ]
+}

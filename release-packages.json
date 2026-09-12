@@ -131,5 +131,27 @@
         "target": "LiveTestSettings.example.json"
       }
     ]
+  },
+  "WeatherLinkLiveLibrary.ProcessorTests": {
+    "displayName": "WeatherLinkLiveLibrary Tests",
+    "expectedCount": 130,
+    "expectedAutomaticCount": 127,
+    "tests": [
+      {
+        "source": "WeatherLinkLiveLibrary",
+        "project": "WeatherLinkLive.Tests/WeatherLinkLive.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [
+      {
+        "source": "WeatherLinkLiveLibrary",
+        "path": "WeatherLinkLive.Tests/LiveTestSettings.example.json",
+        "target": "LiveTestSettings.example.json"
+      }
+    ]
   }
 }

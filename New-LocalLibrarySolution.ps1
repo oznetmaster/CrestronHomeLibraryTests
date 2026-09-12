@@ -8,7 +8,7 @@ param(
     [switch] $Force
 )
 $ErrorActionPreference = 'Stop'
-if ($Source -notmatch '^[A-Za-z][A-Za-z0-9]*$' -or $Package -notmatch '^[A-Za-z][A-Za-z0-9.]*$' -or $SolutionFile -notmatch '^[A-Za-z][A-Za-z0-9.]*\.slnx?$') {
+if ($Source -notmatch '^[A-Za-z][A-Za-z0-9]*$' -or $Package -notmatch '^[A-Za-z][A-Za-z0-9.]*$' -or $SolutionFile -notmatch '^[A-Za-z][A-Za-z0-9. _-]*\.slnx?$') {
     throw 'Use a source name, package name and a solution filename without directory components.'
 }
 $sourceLink = Get-Item -LiteralPath (Join-Path $PSScriptRoot "sources\$Source") -Force

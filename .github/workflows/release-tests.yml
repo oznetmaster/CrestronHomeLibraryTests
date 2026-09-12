@@ -21,6 +21,7 @@ on:
           - OverkizClient.ProcessorTests
           - WiserHeatAPIv2.ProcessorTests
           - SimpleWeather.ProcessorTests
+          - WeatherLinkLiveLibrary.ProcessorTests
 
 permissions:
   contents: write

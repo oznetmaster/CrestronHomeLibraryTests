@@ -19,6 +19,7 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 | Package in Configure | Project | Suites and configuration |
 | --- | --- | --- |
 | **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md): 229 unit tests and 5 optional socket discovery tests |
+| **WeatherLinkLiveLibrary Tests** | `WeatherLinkLiveLibrary.ProcessorTests` | [Package guide](packages/WeatherLinkLiveLibrary.ProcessorTests/README.md): 127 unit tests and 3 opt-in, read-only live tests using a device IP address; all 130 passed on a processor; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.0.0) |
 | **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md): 117 unit tests and 4 opt-in live OpenWeather tests; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.0); all 121 tests validated on a processor |
 | **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md): 138 unit tests, 7 read-only live tests, and 2 explicitly selected room-control tests |
 | **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md): 233 offline tests and 6 opt-in local API tests; [v1.0.1 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1) |
@@ -47,7 +48,7 @@ For local development, keep the source checkouts named in `sources.lock.json` an
 ./Initialize-Sources.ps1 -UseLocalSources
 ```
 
-Use `-LocalProjectsRoot` when they are elsewhere. Setup creates Windows directory junctions under `sources`, pointing to the original repositories. It never replaces existing source directories. Editing a linked project edits its original checkout; each repository retains its own Git history. Source checkouts and links are excluded from this repository.
+Use `-LocalProjectsRoot` when they are elsewhere, or `-LocalSourcePaths` with a private hashtable mapping individual source names to checkout paths when folder names differ. Existing local junction targets are reused on later setup runs. Setup creates Windows directory junctions under `sources`, pointing to the original repositories. It never replaces existing source directories. Editing a linked project edits its original checkout; each repository retains its own Git history. Source checkouts and links are excluded from this repository.
 
 Open **CrestronHomeLibraryTests.sln**. Build the desired processor test project in Debug, such as **KasaClient.ProcessorTests**. Its package is written to `packages/<project>/bin/Debug/net472/<project>.pkg`. Build **CrestronHomeNUnit.Runner** to update the Windows application, and select it as the startup project to launch it with F5. Test Explorer runs the libraries' ordinary desktop NUnit tests.
 
