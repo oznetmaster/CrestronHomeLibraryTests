@@ -8,7 +8,7 @@ param(
     [switch] $Force
 )
 $ErrorActionPreference = 'Stop'
-if ($Source -notmatch '^[A-Za-z][A-Za-z0-9]*$' -or $Package -notmatch '^[A-Za-z][A-Za-z0-9.]*$' -or $SolutionFile -notmatch '^[A-Za-z][A-Za-z0-9.]*\.slnx$') {
+if ($Source -notmatch '^[A-Za-z][A-Za-z0-9]*$' -or $Package -notmatch '^[A-Za-z][A-Za-z0-9.]*$' -or $SolutionFile -notmatch '^[A-Za-z][A-Za-z0-9.]*\.slnx?$') {
     throw 'Use a source name, package name and a solution filename without directory components.'
 }
 $sourceLink = Get-Item -LiteralPath (Join-Path $PSScriptRoot "sources\$Source") -Force
@@ -22,7 +22,26 @@ $packageProject = Join-Path $PSScriptRoot "packages\$Package\$Package.csproj"
 if (!(Test-Path -LiteralPath $packageProject)) { throw 'Package project does not exist.' }
 $xml = [xml]::new()
 $xml.PreserveWhitespace = $true
-$xml.Load($original)
+if ([IO.Path]::GetExtension($original) -eq '.sln') {
+    # Convert a temporary copy so the library's tracked solution stays unchanged.
+    $conversionDirectory = Join-Path ([IO.Path]::GetTempPath()) ('processor-local-solution-' + [Guid]::NewGuid().ToString('N'))
+    [IO.Directory]::CreateDirectory($conversionDirectory) | Out-Null
+    $temporarySolution = Join-Path $conversionDirectory $SolutionFile
+    $convertedSolution = [IO.Path]::ChangeExtension($temporarySolution, '.slnx')
+    try {
+        Copy-Item -LiteralPath $original -Destination $temporarySolution
+        & dotnet sln $temporarySolution migrate
+        if ($LASTEXITCODE -ne 0) { throw 'Cannot convert the original solution to a local solution view.' }
+        $xml.Load($convertedSolution)
+    } finally {
+        foreach ($temporaryFile in @($temporarySolution, $convertedSolution)) {
+            if (Test-Path -LiteralPath $temporaryFile) { Remove-Item -LiteralPath $temporaryFile }
+        }
+        Remove-Item -LiteralPath $conversionDirectory
+    }
+} else {
+    $xml.Load($original)
+}
 # Use the same logical paths as the package's project references. Otherwise MSBuild
 # can build the original and junction aliases concurrently into identical outputs.
 foreach ($project in $xml.SelectNodes('//Project[@Path]')) {

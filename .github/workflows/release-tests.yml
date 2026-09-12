@@ -19,6 +19,7 @@ on:
           - TeslaPowerwallLibrary.ProcessorTests
           - AppleTVControlLibrary.ProcessorTests
           - OverkizClient.ProcessorTests
+          - WiserHeatAPIv2.ProcessorTests
 
 permissions:
   contents: write

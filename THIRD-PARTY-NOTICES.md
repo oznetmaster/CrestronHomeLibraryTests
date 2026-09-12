@@ -2,6 +2,7 @@
 
 Copyright and license terms for dependencies remain independent of this repository's MIT with Commons Clause license. Merging assemblies and renaming compatibility types does not change those terms.
 
+- **WiserHeatAPIv2 and its tests** — Copyright © 2026 Neil Colvin, MIT. See [package notices](packages/WiserHeatAPIv2.ProcessorTests/THIRD-PARTY-NOTICES.md) and its `licenses` directory for WiserHeatAPIv2, YamlDotNet, libyaml and additional dependency licenses.
 - **TeslaPowerwallLibrary and AppleTVControlLibrary** — see their package-specific `THIRD-PARTY-NOTICES.md` and `licenses` directories for library licenses and additional dependencies.
 - **KasaTapoClient and its tests** — Copyright © 2026 Neil Colvin, MIT. The library package uses the exact source revision in `sources.lock.json`; the driver test package references the published KasaTapoClient 1.8.1 package. Full license: `licenses/KasaTapoClient-LICENSE.txt`.
 - **NUnit 4.6.1** — Copyright (c) 2024 Charlie Poole, Rob Prouse, MIT. Uses the official NuGet framework, not a private fork. Test fixtures belong to their respective library projects; these packages do not include the NUnit framework self-test suite. NUnit3TestAdapter is development tooling, not the processor runner.

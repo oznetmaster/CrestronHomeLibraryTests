@@ -87,5 +87,27 @@
       }
     ],
     "expectedAutomaticCount": 233
+  },
+  "WiserHeatAPIv2.ProcessorTests": {
+    "displayName": "WiserHeatAPIv2 Tests",
+    "expectedCount": 147,
+    "expectedAutomaticCount": 138,
+    "tests": [
+      {
+        "source": "WiserHeatAPIv2",
+        "project": "WiserHeatAPIv2.Tests/WiserHeatAPIv2.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [
+      {
+        "source": "WiserHeatAPIv2",
+        "path": "WiserHeatAPIv2.Tests/LiveTestSettings.example.json",
+        "target": "LiveTestSettings.example.json"
+      }
+    ]
   }
 }

@@ -30,6 +30,12 @@
       "repository": "https://github.com/oznetmaster/OverkizClient.git",
       "revision": "1adfd371003a0c0b85330cf0a14ed63c117e807b",
       "requiredProject": "OverKizApi.Tests/OverKizApi.Tests.csproj"
+    },
+    {
+      "name": "WiserHeatAPIv2",
+      "repository": "https://github.com/oznetmaster/WiserHeatAPIv2.git",
+      "revision": "18a31fc0dfd7a2aea17bbcbd2c7d64deaef9b01f",
+      "requiredProject": "WiserHeatAPIv2.Tests/WiserHeatAPIv2.Tests.csproj"
     }
   ]
 }

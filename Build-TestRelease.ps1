@@ -67,7 +67,7 @@ Get-ChildItem -LiteralPath "$root/licenses" | Copy-Item -Destination $licenses -
 foreach ($archive in @(Get-ChildItem $release -File | Where-Object Extension -In '.pkg', '.zip')) {
     $zip = [IO.Compression.ZipFile]::OpenRead($archive.FullName)
     try {
-        $private = @($zip.Entries | Where-Object FullName -Match '(?i)(\.local\.json$|\.csproj\.user$|\.Local\.targets$|(^|/)LiveTestSettings\.json$|ProcessorKeys\.dat$|\.pfx$|TestResults/)')
+        $private = @($zip.Entries | Where-Object FullName -Match '(?i)(\.local\.json$|\.csproj\.user$|\.Local\.targets$|(^|/)LiveTestSettings\.json$|ProcessorKeys\.dat$|(^|/)wiserkeys\.params$|\.pfx$|TestResults/)')
         if ($private.Count) { throw "Private file found in $($archive.Name)." }
     } finally { $zip.Dispose() }
 }
