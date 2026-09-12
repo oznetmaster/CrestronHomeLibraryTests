@@ -65,5 +65,27 @@
       }
     ],
     "documentation": []
+  },
+  "OverkizClient.ProcessorTests": {
+    "displayName": "OverkizClient Tests",
+    "expectedCount": 239,
+    "tests": [
+      {
+        "source": "OverkizClient",
+        "project": "OverKizApi.Tests/OverKizApi.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [
+      {
+        "source": "OverkizClient",
+        "path": "OverKizApi.Tests/LiveTestSettings.example.json",
+        "target": "LiveTestSettings.example.json"
+      }
+    ],
+    "expectedAutomaticCount": 233
   }
 }

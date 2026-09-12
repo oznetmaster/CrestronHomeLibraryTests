@@ -10,7 +10,7 @@
     {
       "name": "CrestronHomeNUnit",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "5c617228df20161f7c4dd7539ac5aca4fcae9e73",
+      "revision": "d93527c2d5c3a39a59dc9ce897005c9e5eb06892",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     },
     {
@@ -24,6 +24,12 @@
       "repository": "https://github.com/oznetmaster/AppleTVControlLibrary.git",
       "revision": "5de886284cda4a6dd72ea6429189ce930470b41a",
       "requiredProject": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj"
+    },
+    {
+      "name": "OverkizClient",
+      "repository": "https://github.com/oznetmaster/OverkizClient.git",
+      "revision": "be1ccdbba8a2dc402b079e1b8668d5e4bd9c2432",
+      "requiredProject": "OverKizApi.Tests/OverKizApi.Tests.csproj"
     }
   ]
 }

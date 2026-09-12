@@ -24,6 +24,12 @@ $extracted = Join-Path $root ('artifacts/verify-' + [Guid]::NewGuid().ToString('
 [IO.Compression.ZipFile]::ExtractToDirectory($pkg, $extracted)
 & "$SdkRoot/ProcessorTestPackage.Validation/bin/Release/net472/ProcessorTestPackage.Validation.exe" "$extracted/$Package.dll" "$root/artifacts/validation" $config.expectedCount
 if ($LASTEXITCODE -ne 0) { throw 'Packaged test discovery failed.' }
+# Some packages exercise dependency behavior that can change during assembly merging.
+# Run only automatic suites; PackageTestHost explicitly excludes manual/live suites.
+if ($config.ContainsKey('expectedAutomaticCount')) {
+    & "$SdkRoot/ProcessorTestPackage.Validation/bin/Release/net472/ProcessorTestPackage.Validation.exe" "$extracted/$Package.dll" "$root/artifacts/execution-validation" $config.expectedAutomaticCount --run-twice
+    if ($LASTEXITCODE -ne 0) { throw 'Packaged automatic-suite execution failed.' }
+}
 $manifest = Get-Content "$projectDirectory/$Package.json" -Raw | ConvertFrom-Json
 if ($manifest.GeneralInformation.DeviceType -ne 'Utility') { throw 'Processor test packages must use the Utility category.' }
 $revision = git -C $root rev-parse HEAD

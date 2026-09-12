@@ -1,0 +1,20 @@
+{
+  "Name": "OverkizClient Tests",
+  "Port": 0,
+  "Suites": [
+    {
+      "Id": "overkizclient",
+      "Name": "OverkizClient Tests — Unit Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^OverKizApi\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
+      "ManualOnly": false,
+      "ExpectedCount": 233
+    },
+    {
+      "Id": "overkizclient-live",
+      "Name": "OverkizClient Tests — Live Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^OverKizApi\\.Tests($|[.])</namespace><cat>Live</cat></and></filter>",
+      "ManualOnly": true,
+      "ExpectedCount": 6
+    }
+  ]
+}

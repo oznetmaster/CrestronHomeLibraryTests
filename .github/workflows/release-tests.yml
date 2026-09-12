@@ -18,6 +18,7 @@ on:
           - KasaClient.ProcessorTests
           - TeslaPowerwallLibrary.ProcessorTests
           - AppleTVControlLibrary.ProcessorTests
+          - OverkizClient.ProcessorTests
 
 permissions:
   contents: write
