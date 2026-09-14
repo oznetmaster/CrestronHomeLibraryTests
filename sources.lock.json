@@ -4,25 +4,25 @@
     {
       "name": "KasaClient",
       "repository": "https://github.com/oznetmaster/KasaTapoClient.git",
-      "revision": "c6a420595abaaab73f08c707e3fb18df3b83c01d",
+      "revision": "e93f81e8476f7a282660c2c2d4c2f99e2e171240",
       "requiredProject": "KasaClient.Tests/KasaClient.Tests.csproj"
     },
     {
       "name": "CrestronHomeNUnit",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "d93527c2d5c3a39a59dc9ce897005c9e5eb06892",
+      "revision": "198d5d351b819e5a1069bf6aac02f8bbebf7d798",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     },
     {
       "name": "TeslaPowerwallLibrary",
       "repository": "https://github.com/oznetmaster/TeslaPowerwallLibrary.git",
-      "revision": "fd384e9d4668d05310479ae0aa94d51b1d39a23e",
+      "revision": "5fd9f4382e759b6332c54564e4a8386a03d45273",
       "requiredProject": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj"
     },
     {
       "name": "AppleTVControlLibrary",
       "repository": "https://github.com/oznetmaster/AppleTVControlLibrary.git",
-      "revision": "5de886284cda4a6dd72ea6429189ce930470b41a",
+      "revision": "1c73a6b9296faedfdfeeb6b3ee5f3542bdb41f78",
       "requiredProject": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj"
     },
     {

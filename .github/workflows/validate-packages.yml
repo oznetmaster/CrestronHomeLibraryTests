@@ -1,0 +1,71 @@
+# Copyright (c) 2026 Neil Colvin.
+# Licensed under the MIT License with Commons Clause. See LICENSE in the repository root.
+
+name: Validate processor packages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-packages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - KasaClient.ProcessorTests
+          - TeslaPowerwallLibrary.ProcessorTests
+          - AppleTVControlLibrary.ProcessorTests
+          - OverkizClient.ProcessorTests
+          - WiserHeatAPIv2.ProcessorTests
+          - SimpleWeather.ProcessorTests
+          - WeatherLinkLiveLibrary.ProcessorTests
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.401
+      - uses: NuGet/setup-nuget@v2
+      - name: Fetch pinned sources and packaging tools
+        run: |
+          ./Initialize-Sources.ps1
+          ./sources/CrestronHomeNUnit/tools/InstallCiTools.ps1
+      - name: Build and validate without publishing
+        env:
+          TEST_PACKAGE: ${{ matrix.package }}
+        run: |
+          $directory = Join-Path $env:GITHUB_WORKSPACE "packages/$env:TEST_PACKAGE"
+          [xml]$project = Get-Content "$directory/$env:TEST_PACKAGE.csproj" -Raw
+          $versions = @($project.Project.PropertyGroup.Version | Where-Object { $_ })
+          if ($versions.Count -ne 1 -or $versions[0] -notmatch '^\d+\.\d+\.\d+$') { throw 'A single three-part package version is required.' }
+          $version = [string]$versions[0]
+          $sdk = Join-Path $env:GITHUB_WORKSPACE 'sources/CrestronHomeNUnit'
+          & "$sdk/CrestronHomeNUnit.Driver/BumpDriverVersion.ps1" -ManifestPath "$directory/$env:TEST_PACKAGE.json" -Configuration Release -ReleaseVersion $version
+          # Establish only the expected version normalization as the local validation baseline.
+          # Nothing in this job pushes commits, creates tags, publishes packages or contacts hardware.
+          git add -- "packages/$env:TEST_PACKAGE/$env:TEST_PACKAGE.json"
+          if ($LASTEXITCODE -ne 0) { throw 'Could not prepare the validation baseline.' }
+          ./Build-TestRelease.ps1 -Version $version -Package $env:TEST_PACKAGE -SdkRoot $sdk -ManifestUtilExe $env:MANIFEST_UTIL_EXE
+      - name: Retain packaged-test validation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-${{ matrix.package }}
+          path: |
+            artifacts/validation/**
+            artifacts/execution-validation/**
+          if-no-files-found: warn

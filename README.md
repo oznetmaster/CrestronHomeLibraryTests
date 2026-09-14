@@ -11,6 +11,7 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 - [Build with Visual Studio](#build-with-visual-studio)
 - [Private settings and library solution views](#private-settings-and-library-solution-views)
 - [Reproducible builds and releases](#reproducible-builds-and-releases)
+- [Continuous integration](#continuous-integration)
 - [Add another package](#add-another-package)
 - [License and non-association](#license-and-non-association)
 
@@ -27,6 +28,12 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 | **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md): unit tests and optional live-device tests |
 
 Each package has its own guide, release notes, manifest identity and version. Add new packages to this table; their test counts, device requirements and settings belong in their package guides.
+
+## Continuous integration
+
+The [package validation workflow](.github/workflows/validate-packages.yml) builds all seven packages on GitHub-hosted Windows runners for pull requests and changes to main. It uses `sources.lock.json`, runs the libraries' ordinary desktop tests, checks discovery from the actual packaged assemblies, and runs each automatic packaged suite twice. Live tests are excluded. Validation does not deploy, create release tags or publish GitHub/NuGet releases. See the [changelog](CHANGELOG.md) for collection changes.
+
+Hardware runs are a separate stage. Developers can use their own processor and a self-hosted runner through the [hardware CI setup guide and template](https://github.com/oznetmaster/CrestronHomeNUnit/blob/HEAD/docs/GitHubHardwareCI.md). Keep that orchestration and its credentials private; independent library repositories retain ordinary portable tests. Upgrade installed test hosts when adopting the shared processor lock so their standalone tiles participate in coordination.
 
 ## Install and run
 

@@ -18,7 +18,8 @@
         "path": "KasaClient.Tests/LiveTestSettings.sample.json",
         "target": "LiveTestSettings.sample.json"
       }
-    ]
+    ],
+    "expectedAutomaticCount": 97
   },
   "TeslaPowerwallLibrary.ProcessorTests": {
     "displayName": "TeslaPowerwallLibrary Tests",
@@ -33,7 +34,8 @@
         ]
       }
     ],
-    "documentation": []
+    "documentation": [],
+    "expectedAutomaticCount": 99
   },
   "AppleTVControlLibrary.ProcessorTests": {
     "displayName": "AppleTVControlLibrary Tests",
@@ -64,7 +66,8 @@
         ]
       }
     ],
-    "documentation": []
+    "documentation": [],
+    "expectedAutomaticCount": 229
   },
   "OverkizClient.ProcessorTests": {
     "displayName": "OverkizClient Tests",
@@ -91,7 +94,6 @@
   "WiserHeatAPIv2.ProcessorTests": {
     "displayName": "WiserHeatAPIv2 Tests",
     "expectedCount": 147,
-    "expectedAutomaticCount": 138,
     "tests": [
       {
         "source": "WiserHeatAPIv2",
@@ -108,12 +110,12 @@
         "path": "WiserHeatAPIv2.Tests/LiveTestSettings.example.json",
         "target": "LiveTestSettings.example.json"
       }
-    ]
+    ],
+    "expectedAutomaticCount": 138
   },
   "SimpleWeather.ProcessorTests": {
     "displayName": "SimpleWeatherClient Tests",
     "expectedCount": 121,
-    "expectedAutomaticCount": 117,
     "tests": [
       {
         "source": "SimpleWeather",
@@ -130,12 +132,12 @@
         "path": "SimpleWeather.Tests/LiveTestSettings.example.json",
         "target": "LiveTestSettings.example.json"
       }
-    ]
+    ],
+    "expectedAutomaticCount": 117
   },
   "WeatherLinkLiveLibrary.ProcessorTests": {
     "displayName": "WeatherLinkLiveLibrary Tests",
     "expectedCount": 130,
-    "expectedAutomaticCount": 127,
     "tests": [
       {
         "source": "WeatherLinkLiveLibrary",
@@ -152,6 +154,7 @@
         "path": "WeatherLinkLive.Tests/LiveTestSettings.example.json",
         "target": "LiveTestSettings.example.json"
       }
-    ]
+    ],
+    "expectedAutomaticCount": 127
   }
 }
