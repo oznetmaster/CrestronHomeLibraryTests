@@ -22,7 +22,7 @@
     {
       "name": "AppleTVControlLibrary",
       "repository": "https://github.com/oznetmaster/AppleTVControlLibrary.git",
-      "revision": "1c73a6b9296faedfdfeeb6b3ee5f3542bdb41f78",
+      "revision": "99b7114404977e72a04699802be35edff329b6ab",
       "requiredProject": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj"
     },
     {
