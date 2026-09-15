@@ -1,9 +1,9 @@
-# TeslaPowerwallLibrary Tests v1.0.0
+# TeslaPowerwallLibrary Tests v1.0.1
 
-Initial processor test package containing 99 NUnit tests from TeslaPowerwallLibrary. No live credentials or physical device operations are required.
+Refresh the processor package to TeslaPowerwallLibrary 1.2.5. The suite now contains 118 deterministic NUnit tests, including Fleet token refresh and automatic region discovery. These tests use controlled responses and require no Tesla account or live credentials.
 
-Add **Utility → Neil Colvin → TeslaPowerwallLibrary Tests** in Crestron Home Configure. Run the unit suite from its standalone Home tile or select it in the Crestron Home NUnit Windows runner. The package embeds its host and uses an automatically assigned port.
+Add **Utility → Neil Colvin → TeslaPowerwallLibrary Tests** in Crestron Home Configure. Run its standalone tile, use the Windows runner, or configure the collection's new Test Explorer workflow project. The workflow can build, install, run and remove the temporary test instance.
 
-Validation: all 99 unit tests passed on the development Crestron Home processor. The same tests also pass on Windows net472 and .NET 10, and the merged suite passed twice in one process.
+Validation covers the same 118 tests on Windows net472 and .NET 10, packaged discovery and repeated packaged execution. Hardware results are recorded separately against the exact tested package.
 
-The release contains the test `.pkg`, source revisions, documentation and SHA-256 checksums. CI validates desktop tests and packaged discovery. No library or NuGet release accompanies this test package. The processor project targets net472 only.
+The release contains the test `.pkg`, pinned source revisions, documentation and SHA-256 checksums. No library or NuGet release accompanies this test-package release. The processor project targets net472 only.

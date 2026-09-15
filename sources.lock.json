@@ -10,13 +10,13 @@
     {
       "name": "CrestronHomeNUnit",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "198d5d351b819e5a1069bf6aac02f8bbebf7d798",
+      "revision": "ad67729080f9d753c16b9f0d4acdd13c52bab5e3",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     },
     {
       "name": "TeslaPowerwallLibrary",
       "repository": "https://github.com/oznetmaster/TeslaPowerwallLibrary.git",
-      "revision": "5fd9f4382e759b6332c54564e4a8386a03d45273",
+      "revision": "02c7169bee466ff6df521d4057daca3390162354",
       "requiredProject": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj"
     },
     {

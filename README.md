@@ -24,7 +24,7 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 | **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md): 117 unit tests and 4 opt-in live OpenWeather tests; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.0); all 121 tests validated on a processor |
 | **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md): 138 unit tests, 7 read-only live tests, and 2 explicitly selected room-control tests |
 | **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md): 233 offline tests and 6 opt-in local API tests; [v1.0.1 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1) |
-| **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md): 99 deterministic unit tests |
+| **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md): 118 deterministic unit tests |
 | **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md): unit tests and optional live-device tests |
 
 Each package has its own guide, release notes, manifest identity and version. Add new packages to this table; their test counts, device requirements and settings belong in their package guides.
@@ -116,3 +116,17 @@ Copyright © 2026 Neil Colvin. Collection code is licensed under MIT with Common
 Crestron, Crestron Home and related marks are trademarks of Crestron Electronics, Inc. This is an independent, unofficial project built against publicly available Crestron Home Entity V2 SDK components. It is not affiliated with, endorsed by, or sponsored by Crestron Electronics, Inc. Crestron's SDK license governs its SDK libraries independently of this repository's license.
 
 TP-Link, Kasa and Tapo are trademarks of their respective owners. This project is not affiliated with, endorsed by, or sponsored by TP-Link. NUnit is an independent project and does not endorse these processor packages.
+
+## Visual Studio processor workflows
+
+Every package has a separate .NET 10 Test Explorer workflow container using **CrestronHomeNUnit.TestAdapter 1.2.1**. These projects live in this collection, preserving the underlying libraries' independence from Crestron. Their public manifests contain only discovery names and private-settings environment-variable names. Hosted CI builds each container and verifies offline discovery; it does not execute hardware workflows.
+
+- [KasaClient](workflows/KasaClient.WorkflowTests/README.md)
+- [TeslaPowerwallLibrary](workflows/TeslaPowerwallLibrary.WorkflowTests/README.md)
+- [AppleTVControlLibrary](workflows/AppleTVControlLibrary.WorkflowTests/README.md)
+- [OverkizClient](workflows/OverkizClient.WorkflowTests/README.md)
+- [WiserHeatAPIv2](workflows/WiserHeatAPIv2.WorkflowTests/README.md)
+- [SimpleWeather](workflows/SimpleWeather.WorkflowTests/README.md)
+- [WeatherLinkLiveLibrary](workflows/WeatherLinkLiveLibrary.WorkflowTests/README.md)
+
+The local library-solution generator adds the corresponding workflow container alongside the processor package. Private settings and paths stay excluded from the independent library repository. Run the workflow separately from ordinary NUnit tests; the workflow already invokes the required local tests. Enable `removeTestInstanceAfterRun` in the private plan to clean up completed test instances.

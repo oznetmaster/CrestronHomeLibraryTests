@@ -23,7 +23,7 @@
   },
   "TeslaPowerwallLibrary.ProcessorTests": {
     "displayName": "TeslaPowerwallLibrary Tests",
-    "expectedCount": 99,
+    "expectedCount": 118,
     "tests": [
       {
         "source": "TeslaPowerwallLibrary",
@@ -35,7 +35,7 @@
       }
     ],
     "documentation": [],
-    "expectedAutomaticCount": 99
+    "expectedAutomaticCount": 118
   },
   "AppleTVControlLibrary.ProcessorTests": {
     "displayName": "AppleTVControlLibrary Tests",

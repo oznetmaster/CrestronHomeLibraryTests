@@ -54,6 +54,14 @@ foreach ($project in $xml.SelectNodes('//Project[@Path]')) {
 $packageEntry = $xml.CreateElement('Project')
 $packageEntry.SetAttribute('Path', [IO.Path]::GetRelativePath($libraryRoot, $packageProject).Replace('\', '/'))
 $xml.DocumentElement.AppendChild($packageEntry) | Out-Null
+$workflowName = $Package.Replace('.ProcessorTests', '.WorkflowTests')
+$workflowProject = Join-Path $PSScriptRoot "workflows/$workflowName/$workflowName.csproj"
+if (Test-Path -LiteralPath $workflowProject) {
+    $workflowEntry = $xml.CreateElement('Project')
+    $workflowEntry.SetAttribute('Path', [IO.Path]::GetRelativePath($libraryRoot, $workflowProject).Replace('\', '/'))
+    $xml.DocumentElement.AppendChild($workflowEntry) | Out-Null
+}
+
 $exclude = & git -C $libraryRoot rev-parse --path-format=absolute --git-path info/exclude
 if ($LASTEXITCODE -ne 0) { throw 'Cannot find the library repository exclusions.' }
 $rules = if (Test-Path -LiteralPath $exclude) { [IO.File]::ReadAllText($exclude) } else { '' }

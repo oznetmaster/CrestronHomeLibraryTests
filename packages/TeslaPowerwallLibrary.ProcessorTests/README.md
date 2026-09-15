@@ -1,6 +1,6 @@
 # TeslaPowerwallLibrary Tests
 
-A self-contained NUnit test package for Crestron Home, built from the original library test project. It contains **99 deterministic tests**: facade guards and mode selection, token-cache persistence, JSON models, calendar-history parsing, validation helpers and enum/version contracts. It never operates a Powerwall and requires no Tesla account or live-device settings.
+A self-contained NUnit test package for Crestron Home, built from the original library test project. It contains **118 deterministic tests**: Fleet refresh and automatic region discovery, facade guards and mode selection, token-cache persistence, JSON models, calendar-history parsing, validation helpers and enum/version contracts. It never operates a Powerwall and requires no Tesla account or live-device settings.
 
 ## Build and run
 
@@ -12,7 +12,7 @@ Temporary token-cache files use NUnit's work directory and are deleted by the fi
 
 ## Source and releases
 
-The fixtures stay in [TeslaPowerwallLibrary](https://github.com/oznetmaster/TeslaPowerwallLibrary); NUnit3TestAdapter runs the same 99 cases on net472 and .NET 10 in Visual Studio and CI. `sources.lock.json` pins the exact library and shared host SDK commits. This project's public releases use `TeslaPowerwallLibrary.ProcessorTests-v<version>` and never publish or change the library's NuGet package.
+The fixtures stay in [TeslaPowerwallLibrary](https://github.com/oznetmaster/TeslaPowerwallLibrary); NUnit3TestAdapter runs the same 118 cases on net472 and .NET 10 in Visual Studio and CI. `sources.lock.json` pins the exact library and shared host SDK commits. This project's public releases use `TeslaPowerwallLibrary.ProcessorTests-v<version>` and never publish or change the library's NuGet package.
 
 Use the collection's **Release processor tests** workflow and select this package. CI validates both desktop targets and packaged discovery. Processor execution is a separate hardware validation step. Private deployment credentials and machine paths belong in `.git/info/exclude` and are never release assets.
 
