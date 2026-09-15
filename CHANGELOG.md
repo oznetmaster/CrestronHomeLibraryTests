@@ -1,5 +1,11 @@
 # Changelog
 
+## Build tooling and service validation - 2026-09-15 (no package release)
+
+- Pin the validated Apple TV library build fix that keeps generated XML documentation separate for each target framework. Runtime code and test cases are unchanged; existing processor package releases remain applicable.
+- Complete unattended service-account workflows for all seven library packages: local tests, package deployment/activation, processor tests, temporary-instance removal and processor lease release. Live suites remain opt-in and were not part of these test-only service runs.
+
+
 ## SimpleWeather.ProcessorTests v1.0.1 - 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
