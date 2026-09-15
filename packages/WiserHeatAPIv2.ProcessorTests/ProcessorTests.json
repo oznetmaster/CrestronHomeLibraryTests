@@ -6,22 +6,19 @@
       "Id": "wiserheatapiv2",
       "Name": "WiserHeatAPIv2 Tests — Unit Tests",
       "FilterXml": "<filter><and><namespace re='1'>^WiserHeatAPIv2\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
-      "ManualOnly": false,
-      "ExpectedCount": 138
+      "ManualOnly": false
     },
     {
       "Id": "wiserheatapiv2-live",
       "Name": "WiserHeatAPIv2 Tests — Read-only Live Tests",
       "FilterXml": "<filter><and><namespace re='1'>^WiserHeatAPIv2[.]Tests($|[.])</namespace><cat>Live</cat><not><cat>LiveControl</cat></not></and></filter>",
-      "ManualOnly": true,
-      "ExpectedCount": 7
+      "ManualOnly": true
     },
     {
       "Id": "wiserheatapiv2-control",
       "Name": "WiserHeatAPIv2 Tests — Room Control Tests",
       "FilterXml": "<filter><test>WiserHeatAPIv2.Tests.LiveRoomControlTests</test></filter>",
-      "ManualOnly": true,
-      "ExpectedCount": 2
+      "ManualOnly": true
     }
   ]
 }

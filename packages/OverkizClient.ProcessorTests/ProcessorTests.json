@@ -6,15 +6,13 @@
       "Id": "overkizclient",
       "Name": "OverkizClient Tests — Unit Tests",
       "FilterXml": "<filter><and><namespace re='1'>^OverKizApi\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
-      "ManualOnly": false,
-      "ExpectedCount": 233
+      "ManualOnly": false
     },
     {
       "Id": "overkizclient-live",
       "Name": "OverkizClient Tests — Live Tests",
       "FilterXml": "<filter><and><namespace re='1'>^OverKizApi\\.Tests($|[.])</namespace><cat>Live</cat></and></filter>",
-      "ManualOnly": true,
-      "ExpectedCount": 6
+      "ManualOnly": true
     }
   ]
 }

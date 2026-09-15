@@ -66,6 +66,7 @@ jobs:
         with:
           name: validation-${{ matrix.package }}
           path: |
+            artifacts/test-results/**
             artifacts/validation/**
             artifacts/execution-validation/**
           if-no-files-found: warn

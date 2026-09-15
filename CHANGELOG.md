@@ -1,5 +1,11 @@
 # Changelog
 
+## Discovery-based CI coverage - 2026-09-15 (no package release)
+
+- Replace duplicated counts with source discovery, desktop execution and merged-package identity comparisons across all seven library packages.
+- Discover separate live-only assemblies, distinguish Wiser read-only/control suites and execute automatic package suites twice. Live device tests remain excluded from hosted execution.
+- Preserve duplicate NUnit display-name multiplicity and normalize known shim type relocation without changing quoted test data. No library or processor runtime code changes.
+
 ## CI package cleanup - 2026-09-15 (no driver or processor package release)
 
 - Update Test Explorer workflow containers to CrestronHomeNUnit.TestAdapter 1.3.0 and document opt-in storage cleanup after successful CI runs.

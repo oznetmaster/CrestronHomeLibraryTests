@@ -12,7 +12,7 @@
     <AssemblyName>WiserHeatAPIv2.ProcessorTests</AssemblyName>
     <RootNamespace>CrestronHomeNUnit.Driver</RootNamespace>
     <Version>1.0.1</Version>
-    <ProcessorExpectedTestCount>147</ProcessorExpectedTestCount>
+
   </PropertyGroup>
   <Import Project="$(ProcessorTestSdkRoot)\ProcessorTestPackage\ProcessorTestPackage.props" Condition="'$(BuildProcessorTestPackages)' == 'true' And Exists('$(ProcessorTestSdkRoot)\ProcessorTestPackage\ProcessorTestPackage.props')" />
   <ItemGroup Condition="'$(BuildProcessorTestPackages)' == 'true'">

@@ -104,9 +104,9 @@ Test packages are **GitHub release assets, not NuGet packages**. Their versions 
 1. Keep or convert its shared fixtures to NUnit in the original library repository, with ordinary desktop validation. Commit and publish those changes there.
 2. Add the library to `sources.lock.json`, including its checkout name, public URL, required test project and exact commit. Run source setup.
 3. Use `sources/CrestronHomeNUnit/New-ProcessorTestProject.ps1` with the original test project under `sources`, an output directory under `packages`, and `-Solution ./CrestronHomeLibraryTests.sln`. Give the package a distinct identity and keep its **Utility** device type.
-4. Add the library and test projects to the solution's Libraries folder, using their paths under `sources`. Configure suite filters, expected counts and manual-only suites in the package's `ProcessorTests.json`.
+4. Add the library and test projects to the solution's Libraries folder, using their paths under `sources`. Configure suite filters and manual-only suites in the package's `ProcessorTests.json`.
 5. Write the package's `README.md`, `RELEASE-NOTES.md`, placeholder inputs and dependency notices. Add it to the available-packages table above. Keep all fixture source, messages and documentation in the library repository independent of Crestron.
-6. Add the package to the release workflow choices and add an entry to `release-packages.json` with its desktop test projects/frameworks, expected discovery count and documentation assets. Each new package must have explicit release validation; adding a project alone does not enable its publication.
+6. Add the package to the release workflow choices and add an entry to `release-packages.json` with its desktop test projects/frameworks, suite-category mapping and documentation assets. Each new package must have explicit release validation; adding a project alone does not enable its publication.
 7. Build and run the package on a processor before its first release. Record updated source pins and release only that package, under its own version.
 
 ## License and non-association
@@ -130,3 +130,14 @@ Every package has a separate .NET 10 Test Explorer workflow container using **Cr
 - [WeatherLinkLiveLibrary](workflows/WeatherLinkLiveLibrary.WorkflowTests/README.md)
 
 The local library-solution generator adds the corresponding workflow container alongside the processor package. Private settings and paths stay excluded from the independent library repository. Run the workflow separately from ordinary NUnit tests; the workflow already invokes the required local tests. Enable `removeTestInstanceAfterRun` in the private plan to clean up completed test instances.
+
+
+## Discovery-based coverage validation
+
+CI and release checks derive their expected test identities from the source assemblies. Each configured framework must execute its automatic tests successfully; the merged net472 package must discover the same test identities and execute every automatic suite successfully twice. Test totals are not duplicated in project properties, package manifests or release metadata.
+
+`release-packages.json` maps each suite ID to `unit`, `live`, `live-read` or `live-control`. Include every packaged test assembly in its `tests` list. A separate live-only test project uses `discoveryOnly: true`; this inventories its fixtures without operating devices. Wiser's read-only and room-control live suites are checked separately. Live tests remain excluded from all hosted execution.
+
+The checks retain duplicate parameterized display names with their exact multiplicity and separate execution records. Known `_Stripped.System` shim relocation is normalized only in type names, leaving quoted argument data intact. Invalid suites, missing tests, category ambiguity, unexpected skips or incomplete results fail validation. Use a fresh, short results directory for Windows net472 checks, especially when fixtures create nested temporary files.
+
+Reusable tooling and generator guidance are in the [NUnit package guide](https://github.com/oznetmaster/CrestronHomeNUnit/blob/main/docs/ProcessorTestPackages.md#validate-coverage-without-duplicated-counts). Package and library release versions are unchanged by this CI migration.

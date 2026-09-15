@@ -1,7 +1,6 @@
 {
   "KasaClient.ProcessorTests": {
     "displayName": "KasaTapoClient Tests",
-    "expectedCount": 104,
     "tests": [
       {
         "source": "KasaClient",
@@ -19,11 +18,13 @@
         "target": "LiveTestSettings.sample.json"
       }
     ],
-    "expectedAutomaticCount": 97
+    "suiteCategories": {
+      "kasatapoclient": "unit",
+      "kasatapoclient-live": "live"
+    }
   },
   "TeslaPowerwallLibrary.ProcessorTests": {
     "displayName": "TeslaPowerwallLibrary Tests",
-    "expectedCount": 118,
     "tests": [
       {
         "source": "TeslaPowerwallLibrary",
@@ -35,11 +36,12 @@
       }
     ],
     "documentation": [],
-    "expectedAutomaticCount": 118
+    "suiteCategories": {
+      "teslapowerwall": "unit"
+    }
   },
   "AppleTVControlLibrary.ProcessorTests": {
     "displayName": "AppleTVControlLibrary Tests",
-    "expectedCount": 234,
     "tests": [
       {
         "source": "AppleTVControlLibrary",
@@ -64,14 +66,24 @@
           "net472",
           "net10.0"
         ]
+      },
+      {
+        "source": "AppleTVControlLibrary",
+        "discoveryOnly": true,
+        "frameworks": [
+          "net472"
+        ],
+        "project": "tests/AppleTV.Companion.LiveTests/AppleTV.Companion.LiveTests.csproj"
       }
     ],
     "documentation": [],
-    "expectedAutomaticCount": 229
+    "suiteCategories": {
+      "appletv": "unit",
+      "appletv-network": "live"
+    }
   },
   "OverkizClient.ProcessorTests": {
     "displayName": "OverkizClient Tests",
-    "expectedCount": 239,
     "tests": [
       {
         "source": "OverkizClient",
@@ -89,11 +101,13 @@
         "target": "LiveTestSettings.example.json"
       }
     ],
-    "expectedAutomaticCount": 233
+    "suiteCategories": {
+      "overkizclient": "unit",
+      "overkizclient-live": "live"
+    }
   },
   "WiserHeatAPIv2.ProcessorTests": {
     "displayName": "WiserHeatAPIv2 Tests",
-    "expectedCount": 147,
     "tests": [
       {
         "source": "WiserHeatAPIv2",
@@ -111,11 +125,14 @@
         "target": "LiveTestSettings.example.json"
       }
     ],
-    "expectedAutomaticCount": 138
+    "suiteCategories": {
+      "wiserheatapiv2": "unit",
+      "wiserheatapiv2-live": "live-read",
+      "wiserheatapiv2-control": "live-control"
+    }
   },
   "SimpleWeather.ProcessorTests": {
     "displayName": "SimpleWeatherClient Tests",
-    "expectedCount": 121,
     "tests": [
       {
         "source": "SimpleWeather",
@@ -133,11 +150,13 @@
         "target": "LiveTestSettings.example.json"
       }
     ],
-    "expectedAutomaticCount": 117
+    "suiteCategories": {
+      "simpleweather": "unit",
+      "simpleweather-live": "live"
+    }
   },
   "WeatherLinkLiveLibrary.ProcessorTests": {
     "displayName": "WeatherLinkLiveLibrary Tests",
-    "expectedCount": 130,
     "tests": [
       {
         "source": "WeatherLinkLiveLibrary",
@@ -155,6 +174,9 @@
         "target": "LiveTestSettings.example.json"
       }
     ],
-    "expectedAutomaticCount": 127
+    "suiteCategories": {
+      "weatherlink": "unit",
+      "weatherlink-live": "live"
+    }
   }
 }

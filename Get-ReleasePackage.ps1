@@ -6,5 +6,5 @@ $ErrorActionPreference = 'Stop'
 $packages = Get-Content "$PSScriptRoot/release-packages.json" -Raw | ConvertFrom-Json -AsHashtable
 if (!$packages.ContainsKey($Package) -or $Package -notmatch '^[A-Za-z][A-Za-z0-9.]*$') { throw 'Unsupported release package.' }
 $config = $packages[$Package]
-if (!$config.displayName -or $config.expectedCount -le 0 -or !$config.tests.Count) { throw 'Release validation configuration is incomplete.' }
+if (!$config.displayName -or !$config.suiteCategories.Count -or !$config.tests.Count) { throw 'Release validation configuration is incomplete.' }
 return $config
