@@ -1,4 +1,4 @@
-# SimpleWeatherClient Tests — v1.0.0 — 2026-09-12
+# SimpleWeatherClient Tests
 
 ## 1.0.1
 
@@ -6,6 +6,8 @@
 - Add the collection's Test Explorer workflow project for build, deployment, execution and optional temporary-instance cleanup. Independent library solutions can include it through an excluded local composite solution.
 - Device-sensitive live suites remain optional. Credentials and local settings are supplied privately and are not included in this package.
 - The processor package remains net472-only and appears in Configure's Utility category. This release contains GitHub assets only; it publishes no NuGet package or underlying library change.
+
+## 1.0.0 - 2026-09-12
 
 - Runs the SimpleWeatherClient v1.0.3 NUnit fixtures on net472 inside Crestron Home.
 - Separate suites for 117 offline unit tests and four opt-in, read-only live OpenWeather tests.
