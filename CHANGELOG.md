@@ -1,5 +1,9 @@
 # Changelog
 
+## TeslaPowerwallLibrary.ProcessorTests v1.0.1 - 2026-09-15
+
+Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
+
 ## 2026-09-15 - Collection source and Test Explorer integration
 
 - Add Test Explorer workflow projects for all seven library processor packages, with offline discovery checks and excluded local solution views. Private plans control hardware execution and cleanup.
