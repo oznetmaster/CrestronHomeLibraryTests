@@ -1,5 +1,9 @@
 # Changelog
 
+## WiserHeatAPIv2.ProcessorTests v1.0.1 - 2026-09-15
+
+Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
+
 ## OverkizClient.ProcessorTests v1.0.2 - 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
