@@ -40,7 +40,7 @@
     {
       "name": "SimpleWeather",
       "repository": "https://github.com/oznetmaster/SimpleWeatherClient.git",
-      "revision": "e629d5ab35f41f7a4d493bfb520b4ac0683cead2",
+      "revision": "e70f95131f55cca4aa14ab47767edcd800a94373",
       "requiredProject": "SimpleWeather.Tests/SimpleWeather.Tests.csproj"
     },
     {
