@@ -1,5 +1,10 @@
 # Changelog
 
+## CI validation - 2026-09-15 (no package release)
+
+- Revalidate the current default-branch source after successful release workflows, including version commits created by GitHub Actions.
+- Allow maintainers to configure exact-source, App-specific checks that must pass before publishing through `RELEASE_REQUIRED_CHECKS`; missing, failed or unconfirmed checks block the release.
+
 ## Build tooling and service validation - 2026-09-15 (no package release)
 
 - Pin the validated Apple TV library build fix that keeps generated XML documentation separate for each target framework. Runtime code and test cases are unchanged; existing processor package releases remain applicable.
