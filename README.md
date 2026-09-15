@@ -119,7 +119,7 @@ TP-Link, Kasa and Tapo are trademarks of their respective owners. This project i
 
 ## Visual Studio processor workflows
 
-Every package has a separate .NET 10 Test Explorer workflow container using **CrestronHomeNUnit.TestAdapter 1.2.1**. These projects live in this collection, preserving the underlying libraries' independence from Crestron. Their public manifests contain only discovery names and private-settings environment-variable names. Hosted CI builds each container and verifies offline discovery; it does not execute hardware workflows.
+Every package has a separate .NET 10 Test Explorer workflow container using **CrestronHomeNUnit.TestAdapter 1.3.0**. These projects live in this collection, preserving the underlying libraries' independence from Crestron. Their public manifests contain only discovery names and private-settings environment-variable names. Hosted CI builds each container and verifies offline discovery; it does not execute hardware workflows.
 
 - [KasaClient](workflows/KasaClient.WorkflowTests/README.md)
 - [TeslaPowerwallLibrary](workflows/TeslaPowerwallLibrary.WorkflowTests/README.md)

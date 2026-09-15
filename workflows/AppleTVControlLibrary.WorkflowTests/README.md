@@ -1,6 +1,6 @@
 # AppleTVControlLibrary processor workflow
 
-This .NET 10 test container integrates the processor workflow with Visual Studio Test Explorer and VSTest. It uses the published **CrestronHomeNUnit.TestAdapter 1.2.1**. The existing NUnit test projects and net472 processor package remain separate.
+This .NET 10 test container integrates the processor workflow with Visual Studio Test Explorer and VSTest. It uses the published **CrestronHomeNUnit.TestAdapter 1.3.0**. The existing NUnit test projects and net472 processor package remain separate.
 
 Before launching Visual Studio, set `CRESTRON_HOME_APPLETVCONTROLLIBRARY_WORKFLOW_SETTINGS` to the absolute path of your private adapter-settings JSON file. That file contains `planPath`, `userName` and `password`; the referenced private plan specifies your processor, certificate fingerprints, source/build paths, required suites, live inputs and cleanup. Keep these files outside the repository, or use `.git/info/exclude` for any private local file. Never commit them or upload results containing private inputs.
 
@@ -14,3 +14,6 @@ dotnet test workflows/AppleTVControlLibrary.WorkflowTests/AppleTVControlLibrary.
 ```
 
 See [Test Explorer setup](https://github.com/oznetmaster/CrestronHomeNUnit/blob/main/docs/VisualStudioTestExplorer.md) and the [private hardware CI template](https://github.com/oznetmaster/CrestronHomeNUnit/blob/main/docs/GitHubHardwareCI.md). Results are retained privately even after a failed or interrupted run. Uncertain execution retains its processor lock for investigation; it is not automatically retried.
+
+
+For automatic CI storage cleanup, set both `removeTestInstanceAfterRun` and `removeTestPackageAfterSuccessfulRun` to true in the private plan. After a successful run, the workflow removes only its own new, uninstalled archive after verifying its identity and bytes. Pre-existing packages remain protected; leave the package-cleanup option false for retained manual deployments. Storage is freed without rebooting, although Home may retain a cached catalogue entry until its next planned reboot. Failed or uncertain runs retain evidence for inspection. Uploaded packages keep their original filenames.
