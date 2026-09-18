@@ -10,7 +10,7 @@
     {
       "name": "CrestronHomeNUnit",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "ad67729080f9d753c16b9f0d4acdd13c52bab5e3",
+      "revision": "5e17b683c2f905509363f011b642efc7a0c61ffc",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     },
     {

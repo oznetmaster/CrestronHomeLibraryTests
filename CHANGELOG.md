@@ -1,5 +1,10 @@
 # Changelog
 
+## Packaging SDK compatibility - 2026-09-18 (no package release)
+
+- Pin the shared processor-test packaging SDK to released CrestronHomeNUnit 1.11.0. Package identity is verified from the metadata inside the completed package, supporting ManifestUtil versions that no longer leave a separate staging metadata file.
+- Library source pins and published processor-package versions remain unchanged. This updates build tooling; each resulting package still requires its normal build and processor validation.
+
 ## Offline release workflow option - 2026-09-15 (no package release)
 
 - Allow an explicit manual release when local hardware or the self-hosted runner is unavailable, with the reason and exact source recorded in the workflow summary.
