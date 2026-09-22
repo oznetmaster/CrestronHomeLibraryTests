@@ -4,9 +4,15 @@
   "Suites": [
     {
       "Id": "teslapowerwall",
-      "Name": "TeslaPowerwallLibrary Tests — Unit Tests",
+      "Name": "TeslaPowerwallLibrary Tests \u2014 Unit Tests",
       "FilterXml": "<filter><and><namespace re='1'>^TeslaPowerwallLibrary\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
       "ManualOnly": false
+    },
+    {
+      "Id": "live",
+      "Name": "TeslaPowerwallLibrary Tests - Live Site (Owner or Fleet)",
+      "FilterXml": "<filter><cat>Live</cat></filter>",
+      "ManualOnly": true
     }
   ]
 }

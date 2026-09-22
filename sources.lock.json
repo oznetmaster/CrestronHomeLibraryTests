@@ -16,7 +16,7 @@
     {
       "name": "TeslaPowerwallLibrary",
       "repository": "https://github.com/oznetmaster/TeslaPowerwallLibrary.git",
-      "revision": "02c7169bee466ff6df521d4057daca3390162354",
+      "revision": "06749dcdd305213ac16cc3f3b2172190110d0e56",
       "requiredProject": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj"
     },
     {

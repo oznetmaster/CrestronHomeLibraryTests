@@ -37,7 +37,8 @@
     ],
     "documentation": [],
     "suiteCategories": {
-      "teslapowerwall": "unit"
+      "teslapowerwall": "unit",
+      "live": "live"
     }
   },
   "AppleTVControlLibrary.ProcessorTests": {
