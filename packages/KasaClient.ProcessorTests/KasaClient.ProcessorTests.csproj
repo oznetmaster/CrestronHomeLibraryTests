@@ -37,4 +37,9 @@ Licensed under the MIT License with Commons Clause. See LICENSE in the repositor
     <ProcessorTestData Include="..\..\THIRD-PARTY-NOTICES.md" TargetPath="Licenses\Package\THIRD-PARTY-NOTICES.md" />
     <ProcessorTestData Include="..\..\licenses\*" TargetPath="Licenses\Package\licenses\%(Filename)%(Extension)" />
   </ItemGroup>
+  <Target Name="ExcludeDesktopTestTooling" BeforeTargets="MergeDependencies" Condition="'$(BuildProcessorTestPackages)' == 'true'">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="$([System.String]::Copy('%(ReferenceCopyLocalPaths.NuGetPackageId)').ToLowerInvariant().StartsWith('microsoft.testing.')) Or $([System.String]::Copy('%(ReferenceCopyLocalPaths.NuGetPackageId)').ToLowerInvariant().StartsWith('microsoft.testplatform.')) Or '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'Microsoft.ApplicationInsights' Or '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'Microsoft.CodeCoverage' Or '%(ReferenceCopyLocalPaths.NuGetPackageId)' == 'NUnit3TestAdapter'" />
+    </ItemGroup>
+  </Target>
 </Project>

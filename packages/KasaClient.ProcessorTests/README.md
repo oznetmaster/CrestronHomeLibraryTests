@@ -20,10 +20,12 @@ The package validator discovers every suite, but its optional `--run-twice` chec
 
 ## Kasa-specific live validation
 
-The package includes 97 deterministic unit tests and seven live test placeholders; configuration can expand live cases for multiple devices. Prefer stable device IDs or unique discovery aliases in private settings so the fixture resolves the current address at execution time.
+The package includes 123 deterministic unit tests and seven live test fixtures; configuration can expand live cases for multiple devices. Prefer stable device IDs or unique discovery aliases in private settings so the fixture resolves the current address at execution time.
 
 Discovery results are shared within one run and reset for the next run. Progress reports discovery, connection, action and restoration timings. Tests that change a device capture its current state and restore it in `finally`, including after failed assertions. Restoration is refreshed and checked; a restoration failure fails the test.
 
 Set `observationDelayMilliseconds` to `0` to omit deliberate observation pauses. Configure `temperatureChildDeviceId` on a hub entry for a read-only T310/T315 temperature check. The `Unattended` category allows selecting it separately from tests that operate devices. This refreshes the hub's reported reading; it does not prove the sensor transmitted a new sample between requests.
 
 Use the public [sample settings](https://github.com/oznetmaster/KasaTapoClient/blob/main/KasaClient.Tests/LiveTestSettings.sample.json) to create your private `LiveTestSettings.json`. The library [test documentation](https://github.com/oznetmaster/KasaTapoClient#testing-and-benchmark-scaffolding) describes all device selectors and options. Never commit real settings or attach live results to a release.
+
+Validation on 2026-09-22 passed all 123 offline and seven live tests on the processor against the KasaTapoClient 2.0 source. Desktop validation passed the same suites on net472 and net10.0. Desktop test adapters and runners are excluded from the merged processor package; NUnit remains included.
