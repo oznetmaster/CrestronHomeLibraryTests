@@ -19,10 +19,13 @@ if (!(Test-Path -LiteralPath $project)) { throw "Package project not found: $Pac
 if (!(Get-Command dotnet -ErrorAction SilentlyContinue)) { throw 'The .NET SDK specified by global.json is required.' }
 $buildArguments = @($project, '/restore', '/nologo', '/v:minimal', "/p:Configuration=$Configuration", '/p:BuildProcessorTestPackages=true', '/p:DeployAfterBuild=false')
 $config = & "$PSScriptRoot/Get-ReleasePackage.ps1" -Package $Package
+$sdkSource = 'CrestronHomeNUnit'
 if ($config.ContainsKey('sdkSource') -and $config.sdkSource) {
     if ($config.sdkSource -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid package SDK source.' }
-    $buildArguments += "/p:ProcessorTestSdkRoot=$PSScriptRoot/sources/$($config.sdkSource)"
+    $sdkSource = $config.sdkSource
 }
+# A locked package build must not inherit a developer's machine-wide SDK path.
+$buildArguments += "/p:ProcessorTestSdkRoot=$PSScriptRoot/sources/$sdkSource"
 if ($ReleaseVersion) { $buildArguments += "/p:ReleaseVersion=$ReleaseVersion" }
 if ($ManifestUtilExe) { $buildArguments += "/p:ManifestUtilExe=$ManifestUtilExe", "/p:LocalCrestronSdkLibDir=$(Split-Path $ManifestUtilExe -Parent)" }
 Push-Location $PSScriptRoot
