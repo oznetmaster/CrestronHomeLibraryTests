@@ -1,6 +1,12 @@
 # OverkizClient Tests
 
-A self-contained Crestron Home test package using the original `OverKizApi.Tests` project. It has **233 offline tests** and **6 opt-in local API live tests**, targeting only **net472**. No separate NUnit self-test host is required.
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/OverkizClient/releases/download/v2.1.0/OverkizClient.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/OverkizClient/releases/download/v2.1.0/OverkizClient.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/OverkizClient/releases/download/v2.1.0/OverkizClient.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/OverkizClient/releases/download/v2.1.0/OverkizClient.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/OverkizClient/releases/download/v2.1.0/OverkizClient.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 323 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
+A self-contained Crestron Home test package using the original `OverKizApi.Tests` project. It has **323 offline tests** and **6 opt-in local API live tests**, targeting only **net472**. No separate NUnit self-test host is required.
 
 ## Build and deploy
 
@@ -24,7 +30,7 @@ For Live Tests, use **Test inputs…** to select the console's shared `%LOCALAPP
 
 The six live checks authenticate with the saved local token, read gateways, setup, devices and states, and register/fetch/unregister their own event listener. They do not generate/revoke tokens or operate devices. The gateway must be reachable from the processor. No devices means the device-specific test is skipped. All six live checks passed on the validation processor on 2026-09-12; live results depend on the configured gateway and local network.
 
-## Sources and release status
+## Historical source and release information
 
 Version **1.0.1** uses the released **OverkizClient v1.2.0** source commit `1adfd371003a0c0b85330cf0a14ed63c117e807b` and the CrestronHomeNUnit **v1.0.1** SDK at `d93527c2d5c3a39a59dc9ce897005c9e5eb06892`. `sources.lock.json` and the release provenance asset record the exact build inputs. Library and processor-package versions are independent.
 
@@ -32,7 +38,7 @@ Download the `.pkg` from [OverkizClient Tests v1.0.1](https://github.com/oznetma
 
 Deployment credentials, real live settings and machine paths are private and excluded through `.git/info/exclude`. They are not included in packages or release assets. See the collection README for Crestron trademark/non-association notices and [third-party notices](THIRD-PARTY-NOTICES.md) for retained dependency licenses.
 
-## Local validation
+## Historical validation: test package 1.0.x
 
 The actual package was extracted and all 233 offline tests passed twice in one process. Packaged discovery found all 239 cases, with Live remaining manual-only. Release validation repeats the offline execution check against the shipped assembly. The shared merger now isolates private `System.SR` helpers per dependency so JSON error paths use the correct resource strings; this fixed 16 packaging-only failures. Processor execution is now validated for both the offline and live suites.
 

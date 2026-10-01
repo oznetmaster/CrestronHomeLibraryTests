@@ -1,5 +1,11 @@
 # TeslaPowerwallLibrary Tests
 
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/TeslaPowerwallLibrary/releases/download/v2.0.0/TeslaPowerwallLibrary.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/TeslaPowerwallLibrary/releases/download/v2.0.0/TeslaPowerwallLibrary.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/TeslaPowerwallLibrary/releases/download/v2.0.0/TeslaPowerwallLibrary.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/TeslaPowerwallLibrary/releases/download/v2.0.0/TeslaPowerwallLibrary.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/TeslaPowerwallLibrary/releases/download/v2.0.0/TeslaPowerwallLibrary.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 142 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
 A self-contained NUnit test package for Crestron Home, built from the original library test project. It contains **142 deterministic tests**: Fleet refresh and automatic region discovery, facade guards and mode selection, token-cache persistence, JSON models, calendar-history parsing, validation helpers and enum/version contracts, partial operation writes, numeric zero reserve, typed System.Text.Json mapping and caller-owned ILogger contexts. The automatic suite never operates a Powerwall and requires no Tesla account or live-device settings. The separate manual live suite contains three read-only tests and requires dedicated credentials.
 
 ## Build and run

@@ -1,5 +1,11 @@
 # AppleTVControlLibrary Tests
 
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/AppleTVControlLibrary/releases/download/v2.2.6/AppleTVControlLibrary.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/AppleTVControlLibrary/releases/download/v2.2.6/AppleTVControlLibrary.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/AppleTVControlLibrary/releases/download/v2.2.6/AppleTVControlLibrary.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/AppleTVControlLibrary/releases/download/v2.2.6/AppleTVControlLibrary.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/AppleTVControlLibrary/releases/download/v2.2.6/AppleTVControlLibrary.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 237 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
 A self-contained NUnit package for Crestron Home using the original Apple TV library fixtures. It has **237 unit tests** and **5 optional socket discovery tests**. No real Apple TV, pairing credentials or device configuration is required.
 
 ## Suites

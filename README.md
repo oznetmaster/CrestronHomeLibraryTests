@@ -38,7 +38,7 @@ Hardware runs are a separate stage. Developers can use their own processor and a
 
 ## Install and run
 
-Download the chosen `.pkg` from [GitHub Releases](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases) and the [Windows runner](https://github.com/oznetmaster/CrestronHomeNUnit/releases). Every package includes its own NUnit host; the separate NUnit framework self-test package is optional.
+Download the current `.pkg` from the release linked in its package guide (the NUnit 5 updates are attached to the corresponding client/library product release; older test releases remain archived in this collection) and the [Windows runner](https://github.com/oznetmaster/CrestronHomeNUnit/releases). Every package includes its own NUnit host; the separate NUnit framework self-test package is optional.
 
 All processor test packages appear in **Utility → Neil Colvin → package name** in **Crestron Home Configure**. Add the package to a room. Multiple packages can coexist; each advertises its automatically assigned TCP port through mDNS.
 

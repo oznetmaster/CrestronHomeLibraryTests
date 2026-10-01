@@ -1,5 +1,11 @@
 # KasaTapoClient Tests processor package
 
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/KasaTapoClient/releases/download/v2.0.1/KasaClient.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/KasaTapoClient/releases/download/v2.0.1/KasaClient.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/KasaTapoClient/releases/download/v2.0.1/KasaClient.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/KasaTapoClient/releases/download/v2.0.1/KasaClient.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/KasaTapoClient/releases/download/v2.0.1/KasaClient.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 132 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
 Open `CrestronHomeLibraryTests.sln` at the collection repository root and build `KasaClient.ProcessorTests.csproj` in Visual Studio. Command-line builds skip packaging unless `-p:BuildProcessorTestPackages=true` is supplied. The package is written to `bin\Debug\net472\KasaClient.ProcessorTests.pkg`.
 
 The project imports the shared host and build tools from `ProcessorTestSdkRoot`. Override that property in `KasaClient.ProcessorTests.Local.targets` if the SDK checkout is elsewhere. Source tests remain in the referenced test project; no fixture copies are maintained here. NUnit and all application dependencies are merged; Crestron SDK libraries remain platform dependencies.
@@ -20,7 +26,7 @@ The package validator discovers every suite, but its optional `--run-twice` chec
 
 ## Kasa-specific live validation
 
-The package includes 123 deterministic unit tests and seven live test fixtures; configuration can expand live cases for multiple devices. Prefer stable device IDs or unique discovery aliases in private settings so the fixture resolves the current address at execution time.
+The package includes 132 deterministic unit tests and seven live test fixtures; configuration can expand live cases for multiple devices. Prefer stable device IDs or unique discovery aliases in private settings so the fixture resolves the current address at execution time.
 
 Discovery results are shared within one run and reset for the next run. Progress reports discovery, connection, action and restoration timings. Tests that change a device capture its current state and restore it in `finally`, including after failed assertions. Restoration is refreshed and checked; a restoration failure fails the test.
 
@@ -28,4 +34,4 @@ Set `observationDelayMilliseconds` to `0` to omit deliberate observation pauses.
 
 Use the public [sample settings](https://github.com/oznetmaster/KasaTapoClient/blob/main/KasaClient.Tests/LiveTestSettings.sample.json) to create your private `LiveTestSettings.json`. The library [test documentation](https://github.com/oznetmaster/KasaTapoClient#testing-and-benchmark-scaffolding) describes all device selectors and options. Never commit real settings or attach live results to a release.
 
-Validation on 2026-09-22 passed all 123 offline and seven live tests on the processor against the KasaTapoClient 2.0 source. Desktop validation passed the same suites on net472 and net10.0. Desktop test adapters and runners are excluded from the merged processor package; NUnit remains included.
+Historical validation before this NUnit 5 migration on 2026-09-22 passed all 123 offline and seven live tests on the processor against the KasaTapoClient 2.0 source. Desktop validation passed the same suites on net472 and net10.0. Desktop test adapters and runners are excluded from the merged processor package; NUnit remains included.

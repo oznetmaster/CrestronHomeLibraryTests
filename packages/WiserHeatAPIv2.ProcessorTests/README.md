@@ -1,5 +1,11 @@
 # WiserHeatAPIv2 processor tests
 
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/WiserHeatAPIv2/releases/download/v1.1.3/WiserHeatAPIv2.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/WiserHeatAPIv2/releases/download/v1.1.3/WiserHeatAPIv2.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/WiserHeatAPIv2/releases/download/v1.1.3/WiserHeatAPIv2.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/WiserHeatAPIv2/releases/download/v1.1.3/WiserHeatAPIv2.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/WiserHeatAPIv2/releases/download/v1.1.3/WiserHeatAPIv2.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 211 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
 This package runs the shared [WiserHeatAPIv2 NUnit fixtures](https://github.com/oznetmaster/WiserHeatAPIv2) inside a Crestron Home processor. The package targets **net472** and uses the official NUnit framework. Fixture source remains in the independent library repository.
 
 ## Build and deploy
@@ -20,7 +26,7 @@ The output is `packages/WiserHeatAPIv2.ProcessorTests/bin/Debug/net472/WiserHeat
 
 | Runner suite | Tests | Behavior |
 |---|---:|---|
-| Unit Tests | 138 | Offline fixtures, including HTTP, models, schedules, lifecycle, configuration, and restoration guards. |
+| Unit Tests | 211 | Offline fixtures, including HTTP, models, schedules, lifecycle, configuration, and restoration guards. |
 | Read-only Live Tests | 7 | Reads a configured Wiser hub; optional OpenTherm or unavailable collections may skip. |
 | Room Control Tests | 2 | Runs the control fixture for the room named in private settings. Toggles/restores window detection and briefly lowers/restores a scheduled temperature setpoint. |
 
@@ -38,7 +44,7 @@ Keep the real file outside source checkouts. It is not compiled, merged, copied 
 
 Run control tests from only one runner/framework at a time. Each test reads the original setting and restores it in `finally` with an independent cleanup timeout, then reads back the result. The temperature test requires Auto mode following a schedule, with no existing override, boost or timer; otherwise it skips. It lowers the setpoint by 0.5°C using a one-minute override, then cancels the override and verifies schedule control. It does not change the schedule assignment or room mode. Interrupted processes or loss of hub connectivity can prevent cleanup; the temperature override expires, but window detection may need manual restoration.
 
-## Validation and release
+## Historical validation: test package 1.0.0
 
 Validation of the finished `.pkg` discovered **147** tests across all suites. All **138** automatic tests passed twice in the same desktop process using the merged package assembly. Desktop live validation passed on net472 and net10.0: six read-only tests passed, optional OpenTherm skipped, and both room-control tests passed with restoration confirmed. Processor validation was reported by the user: 138 unit tests, six read-only live tests and both room-control tests passed; OpenTherm was unavailable as expected. Processor result XML was not collected for this report.
 

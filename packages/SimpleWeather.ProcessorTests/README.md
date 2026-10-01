@@ -1,5 +1,11 @@
 # SimpleWeatherClient processor tests
 
+## NUnit 5 test package
+
+Test package **1.1.0** uses **NUnit 5.0.0**. It is independent of the product version. [Download package](https://github.com/oznetmaster/SimpleWeatherClient/releases/download/v2.0.0/SimpleWeather.ProcessorTests-1.1.0.pkg), [documentation](https://github.com/oznetmaster/SimpleWeatherClient/releases/download/v2.0.0/SimpleWeather.ProcessorTests-1.1.0-Documentation.zip), [validation](https://github.com/oznetmaster/SimpleWeatherClient/releases/download/v2.0.0/SimpleWeather.ProcessorTests-1.1.0.validation.json), [exact source revisions](https://github.com/oznetmaster/SimpleWeatherClient/releases/download/v2.0.0/SimpleWeather.ProcessorTests-1.1.0.sources.json), and [SHA-256 checksums](https://github.com/oznetmaster/SimpleWeatherClient/releases/download/v2.0.0/SimpleWeather.ProcessorTests-1.1.0-SHA256SUMS.txt) are attached to the existing product release. No product binary or NuGet version changed for this test update.
+
+Validated on 1 October 2026: 177 offline cases passed in each of two runs from the packaged assembly on Windows. All suite identities were checked against source discovery. Live/manual tests and execution on the processor were not repeated during this migration; earlier hardware results do not certify this new package.
+
 Runs the shared [SimpleWeatherClient NUnit suite](https://github.com/oznetmaster/SimpleWeatherClient) inside a Crestron Home processor. This package targets **net472 only**, uses official NUnit 5.0.0, and includes its own test host. Library and fixture source stay in their independent repository; the exact migrated source revision is recorded in `sources.lock.json` and the published provenance receipt.
 
 ## Build and deploy in Visual Studio
@@ -21,14 +27,14 @@ After deployment, add **Utility → Neil Colvin → SimpleWeatherClient Tests** 
 
 | Suite | Tests | Behavior |
 |---|---:|---|
-| Unit Tests | 117 | Offline HTTP, cancellation, disposal, geocoding, model parsing, regional formatting and settings validation. No account or Internet access required. |
+| Unit Tests | 177 | Offline HTTP, cancellation, disposal, geocoding, model parsing, regional formatting and settings validation. No account or Internet access required. |
 | Live Tests | 4 | Actual current weather, forecast readings, reverse geocoding and configurable city search using an OpenWeather account. |
 
 Live Tests are manual-only and run through the Windows runner. The Home tile and automated package validation run only the unit suite. Each live test performs read-only requests, which count against the account's applicable quota. The processor needs Internet/DNS access to OpenWeather. Current weather and forecast use the library's normal One Call requests and free endpoint fallback when One Call access is unavailable.
 
 ## Live settings and the Windows runner
 
-Use **Find packages**, select **SimpleWeatherClient Tests**, and authenticate with the processor's SFTP credentials. Select **Live Tests** and use **Test inputs…** to supply the private `LiveTestSettings.json` used by the library's desktop tests. Locally this file is beside `SimpleWeather.Tests.csproj`; the tracked [example](https://github.com/oznetmaster/SimpleWeatherClient/blob/v1.0.3/SimpleWeather.Tests/LiveTestSettings.example.json) is also included in release documentation.
+Use **Find packages**, select **SimpleWeatherClient Tests**, and authenticate with the processor's SFTP credentials. Select **Live Tests** and use **Test inputs…** to supply the private `LiveTestSettings.json` used by the library's desktop tests. Locally this file is beside `SimpleWeather.Tests.csproj`; the tracked [example](https://github.com/oznetmaster/SimpleWeatherClient/blob/a3f6d5dfb130681cca38379bdb093e90b66fee1a/SimpleWeather.Tests/LiveTestSettings.example.json) is also included in release documentation.
 
 Settings are `apiKey`, `latitude`, `longitude`, `units` (`metric`, `imperial` or `standard`), and optional `cityName`/`countryCode`. Use coordinates near a populated place for reverse geocoding. Direct city search skips if `cityName` is absent. It does not assume a reverse-geocoded locality can be found in the direct search index.
 
@@ -36,7 +42,7 @@ The runner supplies `TestDataDirectory` and `EnableLiveTests=true`, so JSON `ena
 
 The settings and API key are not compiled, merged, copied into the package or published. Supply them at run time through the runner. Deployment credentials, local paths, `.csproj.user` and private settings use `.git/info/exclude`, not tracked ignore rules. Only the empty example is distributed. `PrepareRunner.ps1` can import the existing private processor deployment credentials into the runner's Windows-protected local storage.
 
-## Validation and releases
+## Historical validation: test package 1.0.0
 
 Build-time validation discovered **121 tests** across the two suites. Local validation executed **117 automatic tests twice** from the actual merged package, with all tests passing both times. Desktop live checks have passed on net472 and net10.0; hardware validation also passed all **117 unit tests and four live tests** on a Crestron Home processor.
 
