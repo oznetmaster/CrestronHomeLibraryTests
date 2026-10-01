@@ -44,3 +44,6 @@ The package's initial version is **1.0.0**, independent of library version 1.0.3
 Copyright © 2026 Neil Colvin. Collection infrastructure is licensed under MIT with Commons Clause. WeatherLinkLiveLibrary and its tests retain their MIT license. See [third-party notices](THIRD-PARTY-NOTICES.md) and bundled licenses.
 
 Crestron and Crestron Home are trademarks of Crestron Electronics, Inc. WeatherLink Live is a trademark of Davis Instruments. This independent package is not affiliated with, endorsed by or supported by Crestron or Davis Instruments. Crestron SDK licensing applies separately.
+
+Version 1.1.0 uses NUnit 5.0.0 and the separately pinned CrestronHomeNUnit5 source (released SDK 2.0.0), with WeatherLinkLiveLibrary 2.1.0 sources. Other packages retain their existing SDK pins.
+

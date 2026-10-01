@@ -46,8 +46,14 @@
     {
       "name": "WeatherLinkLiveLibrary",
       "repository": "https://github.com/oznetmaster/WeatherLinkLiveLibrary.git",
-      "revision": "852d3dbc710d003cf97f65420919d4b004faac0b",
+      "revision": "2ff4032429b995ccaa8abd6e9b8896017d56e871",
       "requiredProject": "WeatherLinkLive.Tests/WeatherLinkLive.Tests.csproj"
+    },
+    {
+      "name": "CrestronHomeNUnit5",
+      "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
+      "revision": "5a2d8080b2bbf7221bc8fc4cc53b35ac5bec4d1c",
+      "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     }
   ]
 }

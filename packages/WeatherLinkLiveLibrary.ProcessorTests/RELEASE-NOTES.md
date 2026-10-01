@@ -1,23 +1,5 @@
-# WeatherLinkLiveLibrary Tests
+# WeatherLinkLiveLibrary processor tests 1.1.0
 
-## 1.0.1
+This package runs WeatherLinkLiveLibrary 2.1.0 test sources with the released CrestronHomeNUnit 2.0.0 SDK and NUnit 5.0.0. It includes the client recovery regression tests and the existing opt-in live tests. The normal unit suite contains 135 cases. Live tests remain manual and require private inputs.
 
-- Rebuild the existing suite with CrestronHomeNUnit 1.2.1 so processor execution participates in the shared reservation used by the runner, Test Explorer, CLI and hardware CI.
-- Add the collection's Test Explorer workflow project for build, deployment, execution and optional temporary-instance cleanup. Independent library solutions can include it through an excluded local composite solution.
-- Device-sensitive live suites remain optional. Credentials and local settings are supplied privately and are not included in this package.
-- The processor package remains net472-only and appears in Configure's Utility category. This release contains GitHub assets only; it publishes no NuGet package or underlying library change.
-
-Initial Crestron Home processor test package, released 12 September 2026.
-
-- Shared WeatherLinkLiveLibrary v1.0.3 NUnit fixtures, packaged for net472 with the official NUnit framework.
-- Separate suites for 127 offline tests and three opt-in, read-only live device tests.
-- Utility category, standalone unit-test tile, automatic TCP port and mDNS discovery.
-- IP-only live JSON settings supplied privately through the Windows runner.
-- Visual Studio Debug build/deploy support and an excluded local library solution view.
-- Dependency notices, licenses, source revision record and SHA-256 checksums included.
-
-All **127 unit tests and 3 live tests passed on a Crestron Home processor**. The merged package also passed all automatic tests twice on Windows, and desktop fixtures passed on both net472 and net10.0.
-
-Install **Utility → Neil Colvin → WeatherLinkLiveLibrary Tests** in Configure. The tile runs unit tests. For live tests, select the package's Live Tests suite in the Windows runner and supply private `LiveTestSettings.json` through **Test inputs…**. Only the WeatherLink device IP address is required; the processor must be able to reach its local HTTP endpoint.
-
-Download the `.pkg` for installation and the documentation archive for setup instructions and example settings. Distribution is through GitHub releases only; this processor package is not published to NuGet. Private IP settings and deployment credentials are excluded from release assets.
+WeatherLink uses its own pinned NUnit 5 SDK source. Other library packages retain their existing SDK pins and source revisions. This test-only Utility package does not install a production weather driver.

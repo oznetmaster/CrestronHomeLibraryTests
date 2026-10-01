@@ -178,6 +178,7 @@
     "suiteCategories": {
       "weatherlink": "unit",
       "weatherlink-live": "live"
-    }
+    },
+    "sdkSource": "CrestronHomeNUnit5"
   }
 }

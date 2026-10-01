@@ -72,3 +72,7 @@ Published processor test package on GitHub. This is a test-package release only;
 
 
 Individual processor package versions are published separately on GitHub. These dated source changes do not announce a package release.
+## WeatherLinkLiveLibrary.ProcessorTests 1.1.0 - 2026-10-01
+
+Use the independently pinned NUnit 5 SDK and WeatherLinkLiveLibrary 2.1.0 recovery tests. Unrelated test packages keep their existing SDK/source pins.
+

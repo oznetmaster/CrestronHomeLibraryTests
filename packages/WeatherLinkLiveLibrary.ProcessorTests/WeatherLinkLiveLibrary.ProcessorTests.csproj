@@ -7,12 +7,12 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>false</IsTestProject>
     <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
-    <ProcessorTestSdkRoot Condition="'$(ProcessorTestSdkRoot)' == ''">$(MSBuildProjectDirectory)\..\..\sources\CrestronHomeNUnit</ProcessorTestSdkRoot>
+    <ProcessorTestSdkRoot Condition="'$(ProcessorTestSdkRoot)' == ''">$(MSBuildProjectDirectory)\..\..\sources\CrestronHomeNUnit5</ProcessorTestSdkRoot>
     <BuildProcessorTestPackages Condition="'$(BuildProcessorTestPackages)' == '' And '$(BuildingInsideVisualStudio)' == 'true'">true</BuildProcessorTestPackages>
     <BuildProcessorTestPackages Condition="'$(BuildProcessorTestPackages)' == ''">false</BuildProcessorTestPackages>
     <AssemblyName>WeatherLinkLiveLibrary.ProcessorTests</AssemblyName>
     <RootNamespace>CrestronHomeNUnit.Driver</RootNamespace>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
 
   </PropertyGroup>
   <Import Project="$(ProcessorTestSdkRoot)\ProcessorTestPackage\ProcessorTestPackage.props" Condition="'$(BuildProcessorTestPackages)' == 'true' And Exists('$(ProcessorTestSdkRoot)\ProcessorTestPackage\ProcessorTestPackage.props')" />

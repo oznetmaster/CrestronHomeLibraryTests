@@ -18,6 +18,11 @@ $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer
 $msbuild = & $vswhere -latest -products '*' -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
 if (!$msbuild) { throw 'Visual Studio MSBuild is required.' }
 $buildArguments = @($project, '/restore', '/nologo', '/v:minimal', "/p:Configuration=$Configuration", '/p:BuildProcessorTestPackages=true', '/p:DeployAfterBuild=false')
+$config = & "$PSScriptRoot/Get-ReleasePackage.ps1" -Package $Package
+if ($config.sdkSource) {
+    if ($config.sdkSource -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid package SDK source.' }
+    $buildArguments += "/p:ProcessorTestSdkRoot=$PSScriptRoot/sources/$($config.sdkSource)"
+}
 if ($ReleaseVersion) { $buildArguments += "/p:ReleaseVersion=$ReleaseVersion" }
 if ($ManifestUtilExe) { $buildArguments += "/p:ManifestUtilExe=$ManifestUtilExe", "/p:LocalCrestronSdkLibDir=$(Split-Path $ManifestUtilExe -Parent)" }
 & $msbuild @buildArguments

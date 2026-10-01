@@ -11,6 +11,10 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $root = $PSScriptRoot
 $config = & "$root/Get-ReleasePackage.ps1" -Package $Package
+if ($config.sdkSource) {
+    if ($config.sdkSource -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid package SDK source.' }
+    $SdkRoot = Join-Path $root ('sources/' + $config.sdkSource)
+}
 $projectDirectory = Join-Path $root "packages/$Package"
 & "$root/Build.ps1" -Configuration Release -Package $Package -LockedSources -ReleaseVersion $Version -ManifestUtilExe $ManifestUtilExe
 & "$root/Validate-Tests.ps1" -Package $Package
