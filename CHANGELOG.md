@@ -1,5 +1,9 @@
 # Changelog
 
+## WeatherLinkLiveLibrary.ProcessorTests v1.1.0 - 2026-10-01
+
+Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
+
 ## Packaging SDK compatibility - 2026-09-18 (no package release)
 
 - Pin the shared processor-test packaging SDK to released CrestronHomeNUnit 1.11.0. Package identity is verified from the metadata inside the completed package, supporting ManifestUtil versions that no longer leave a separate staging metadata file.
