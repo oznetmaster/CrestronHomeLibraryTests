@@ -20,7 +20,7 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 | Package in Configure | Project | Suites and configuration |
 | --- | --- | --- |
 | **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md): 229 unit tests and 5 optional socket discovery tests |
-| **WeatherLinkLiveLibrary Tests** | `WeatherLinkLiveLibrary.ProcessorTests` | [Package guide](packages/WeatherLinkLiveLibrary.ProcessorTests/README.md): 127 unit tests and 3 opt-in, read-only live tests using a device IP address; all 130 passed on a processor; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.0.0) |
+| **WeatherLinkLiveLibrary Tests** | `WeatherLinkLiveLibrary.ProcessorTests` | [Package guide](packages/WeatherLinkLiveLibrary.ProcessorTests/README.md): 135 unit tests and 3 opt-in, read-only live tests using a device IP address; NUnit 5; [v1.1.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.1.0) |
 | **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md): 117 unit tests and 4 opt-in live OpenWeather tests; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.0); all 121 tests validated on a processor |
 | **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md): 138 unit tests, 7 read-only live tests, and 2 explicitly selected room-control tests |
 | **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md): 233 offline tests and 6 opt-in local API tests; [v1.0.1 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1) |
@@ -119,7 +119,7 @@ TP-Link, Kasa and Tapo are trademarks of their respective owners. This project i
 
 ## Visual Studio processor workflows
 
-Every package has a separate .NET 10 Test Explorer workflow container using **CrestronHomeNUnit.TestAdapter 1.3.0**. These projects live in this collection, preserving the underlying libraries' independence from Crestron. Their public manifests contain only discovery names and private-settings environment-variable names. Hosted CI builds each container and verifies offline discovery; it does not execute hardware workflows.
+Every package has a separate .NET 10 Test Explorer workflow container using a released **CrestronHomeNUnit.TestAdapter** (WeatherLink uses 2.0.0 for NUnit 5; the other containers retain 1.3.0). These projects live in this collection, preserving the underlying libraries' independence from Crestron. Their public manifests contain only discovery names and private-settings environment-variable names. Hosted CI builds each container and verifies offline discovery; it does not execute hardware workflows.
 
 - [KasaClient](workflows/KasaClient.WorkflowTests/README.md)
 - [TeslaPowerwallLibrary](workflows/TeslaPowerwallLibrary.WorkflowTests/README.md)

@@ -1,6 +1,6 @@
 # WeatherLinkLiveLibrary processor tests
 
-Runs the shared [WeatherLink Live Library NUnit fixtures](https://github.com/oznetmaster/WeatherLinkLiveLibrary) inside Crestron Home. This package targets **net472 only**, uses official NUnit 4.6.1 and includes its own host. The source pin is library **v1.0.3**; library and fixture source remain in their independent repository.
+Runs the shared [WeatherLink Live Library NUnit fixtures](https://github.com/oznetmaster/WeatherLinkLiveLibrary) inside Crestron Home. This package targets **net472 only**, uses official NUnit 5.0.0 and includes its own host. The source pin is library **v2.1.0**; library and fixture source remain in their independent repository.
 
 ## Build and deploy
 
@@ -20,14 +20,14 @@ Add **Utility → Neil Colvin → WeatherLinkLiveLibrary Tests** in Configure. T
 
 | Suite | Tests | Behavior |
 |---|---:|---|
-| Unit Tests | 127 | All readings and conversions, HTTP and JSON errors, polling/cache timing, cancellation, concurrency, disposal, sensor ordering and settings validation. No device or network access needed. |
+| Unit Tests | 135 | All readings and conversions, HTTP and JSON errors, polling/cache timing, reconnect backoff and transition events, cancellation, concurrency, disposal, sensor ordering and settings validation. No device or network access needed. |
 | Live Tests | 3 | Read current conditions, check cached metric conversions and refresh after a ten-second polling interval. |
 
 Live Tests are manual-only and run through the Windows runner. They make read-only requests to the WeatherLink device; they do not modify any device settings. The standalone tile and release validation run only Unit Tests. The processor must be able to reach the WeatherLink device's local HTTP endpoint. No cloud account, API key or device credentials are required.
 
 ## Live inputs
 
-In the Windows runner, use **Find packages**, select **WeatherLinkLiveLibrary Tests** and authenticate to the processor. Select **Live Tests**, then use **Test inputs…** to supply the private `LiveTestSettings.json` used for desktop WeatherLink tests. Locally, this file is beside `WeatherLinkLive.Tests.csproj`. A placeholder example is included in release documentation and [the library repository](https://github.com/oznetmaster/WeatherLinkLiveLibrary/blob/v1.0.3/WeatherLinkLive.Tests/LiveTestSettings.example.json).
+In the Windows runner, use **Find packages**, select **WeatherLinkLiveLibrary Tests** and authenticate to the processor. Select **Live Tests**, then use **Test inputs…** to supply the private `LiveTestSettings.json` used for desktop WeatherLink tests. Locally, this file is beside `WeatherLinkLive.Tests.csproj`. A placeholder example is included in release documentation and [the library repository](https://github.com/oznetmaster/WeatherLinkLiveLibrary/blob/v2.1.0/WeatherLinkLive.Tests/LiveTestSettings.example.json).
 
 The settings contain `ipAddress` and `enabled`. The runner supplies `TestDataDirectory` and `EnableLiveTests=true`, so `enabled` may stay false in the file for normal desktop testing. Use **Run all** in the Live Tests suite, or discover and select individual tests. Runner v1.0.2 or later shares inputs between suites in this package.
 
@@ -35,9 +35,9 @@ The actual IP settings are supplied at run time, never compiled, merged or copie
 
 ## Validation and release
 
-Discovery must find **130 tests**. Pre-release validation runs **127 automatic tests twice** from the merged package. The built package discovered all 130 tests, and all 127 automatic tests passed twice from the extracted, merged assembly on Windows. The desktop unit and live fixtures also passed on net472 and net10.0. On 12 September 2026, all **127 unit tests and 3 live tests passed on a Crestron Home processor**.
+Discovery must find **138 tests**. Pre-release validation runs **135 automatic tests twice** from the merged package and checks their identities against source discovery. The three optional live tests are discovered but excluded from unattended publication checks. Validation for older package versions does not certify this version.
 
-The package's initial version is **1.0.0**, independent of library version 1.0.3. Distribution is through **GitHub releases only**, never NuGet. See [release notes](RELEASE-NOTES.md) and [download v1.0.0](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.0.0).
+The package version is **1.1.0**, independent of library version 2.1.0. Distribution is through **GitHub releases only**, never NuGet. See [release notes](RELEASE-NOTES.md) and [download v1.1.0](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.1.0).
 
 ## License and disclaimer
 
