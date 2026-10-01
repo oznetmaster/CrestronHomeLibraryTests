@@ -89,6 +89,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWeather.WorkflowTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherLinkLiveLibrary.WorkflowTests", "workflows\WeatherLinkLiveLibrary.WorkflowTests\WeatherLinkLiveLibrary.WorkflowTests.csproj", "{C072BB89-B566-4946-AD65-8D66A02867EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RainPointClient.ProcessorTests", "packages\RainPointClient.ProcessorTests\RainPointClient.ProcessorTests.csproj", "{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{218B6F35-38A8-8894-4A45-A70D6B0063B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RainPointClient.WorkflowTests", "workflows\RainPointClient.WorkflowTests\RainPointClient.WorkflowTests.csproj", "{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -555,6 +561,30 @@ Global
 		{C072BB89-B566-4946-AD65-8D66A02867EF}.Release|x64.Build.0 = Release|Any CPU
 		{C072BB89-B566-4946-AD65-8D66A02867EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{C072BB89-B566-4946-AD65-8D66A02867EF}.Release|x86.Build.0 = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|x64.Build.0 = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Debug|x86.Build.0 = Debug|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|x64.ActiveCfg = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|x64.Build.0 = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|x86.ActiveCfg = Release|Any CPU
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B}.Release|x86.Build.0 = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|x64.Build.0 = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Debug|x86.Build.0 = Debug|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|x64.ActiveCfg = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|x64.Build.0 = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|x86.ActiveCfg = Release|Any CPU
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -599,5 +629,7 @@ Global
 		{648258CF-A58F-40C4-8972-AC3581ECF31A} = {A7043D59-5793-C71A-BC6A-7F4DD7000530}
 		{3F2C5303-5723-4034-9A1D-59F1CB781A86} = {A7043D59-5793-C71A-BC6A-7F4DD7000530}
 		{C072BB89-B566-4946-AD65-8D66A02867EF} = {A7043D59-5793-C71A-BC6A-7F4DD7000530}
+		{3D93FF8C-B041-40DE-84D6-08E0EBD9203B} = {809F86A1-1C4C-B159-0CD4-DF9D33D876CE}
+		{0215CD04-81CE-4FCC-A0FB-D17263D8FF9D} = {218B6F35-38A8-8894-4A45-A70D6B0063B3}
 	EndGlobalSection
 EndGlobal

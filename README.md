@@ -2,7 +2,7 @@
 
 Processor test packages for platform-independent .NET libraries, in one Visual Studio solution. Each library keeps its NUnit fixtures in its own repository. This repository contains only the Crestron Home package projects, suite definitions and package UI. Crestron-specific drivers can keep processor test projects in their own driver repositories.
 
-The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit](https://github.com/oznetmaster/CrestronHomeNUnit). All processor test projects target **net472** and use the official NUnit framework.
+The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit](https://github.com/oznetmaster/CrestronHomeNUnit). All processor test projects target **net472** and use the official NUnit 5.0.0 framework.
 
 ## Contents
 
@@ -19,19 +19,20 @@ The shared host, Windows runner and packaging SDK come from [Crestron Home NUnit
 
 | Package in Configure | Project | Suites and configuration |
 | --- | --- | --- |
-| **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md): 229 unit tests and 5 optional socket discovery tests |
-| **WeatherLinkLiveLibrary Tests** | `WeatherLinkLiveLibrary.ProcessorTests` | [Package guide](packages/WeatherLinkLiveLibrary.ProcessorTests/README.md): 135 unit tests and 3 opt-in, read-only live tests using a device IP address; NUnit 5; [v1.1.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.1.0) |
-| **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md): 117 unit tests and 4 opt-in live OpenWeather tests; [v1.0.0 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.0); all 121 tests validated on a processor |
-| **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md): 138 unit tests, 7 read-only live tests, and 2 explicitly selected room-control tests |
-| **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md): 233 offline tests and 6 opt-in local API tests; [v1.0.1 release](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.1) |
-| **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md): 118 deterministic unit tests |
-| **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md): unit tests and optional live-device tests |
+| **AppleTVControlLibrary Tests** | `AppleTVControlLibrary.ProcessorTests` | [Package guide](packages/AppleTVControlLibrary.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **WeatherLinkLiveLibrary Tests** | `WeatherLinkLiveLibrary.ProcessorTests` | [Package guide](packages/WeatherLinkLiveLibrary.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **SimpleWeatherClient Tests** | `SimpleWeather.ProcessorTests` | [Package guide](packages/SimpleWeather.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **WiserHeatAPIv2 Tests** | `WiserHeatAPIv2.ProcessorTests` | [Package guide](packages/WiserHeatAPIv2.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **OverkizClient Tests** | `OverkizClient.ProcessorTests` | [Package guide](packages/OverkizClient.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **TeslaPowerwallLibrary Tests** | `TeslaPowerwallLibrary.ProcessorTests` | [Package guide](packages/TeslaPowerwallLibrary.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **KasaTapoClient Tests** | `KasaClient.ProcessorTests` | [Package guide](packages/KasaClient.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
+| **RainPointClient Tests** | `RainPointClient.ProcessorTests` | [Package guide](packages/RainPointClient.ProcessorTests/README.md); NUnit 5.0.0; discovered fixture inventory and execution results accompany validation |
 
 Each package has its own guide, release notes, manifest identity and version. Add new packages to this table; their test counts, device requirements and settings belong in their package guides.
 
 ## Continuous integration
 
-The [package validation workflow](.github/workflows/validate-packages.yml) builds all seven packages on GitHub-hosted Windows runners for pull requests and changes to main. It uses `sources.lock.json`, runs the libraries' ordinary desktop tests, checks discovery from the actual packaged assemblies, and runs each automatic packaged suite twice. Live tests are excluded. Validation does not deploy, create release tags or publish GitHub/NuGet releases. See the [changelog](CHANGELOG.md) for collection changes.
+The [package validation workflow](.github/workflows/validate-packages.yml) builds all eight packages on GitHub-hosted Windows runners for pull requests and changes to main. It uses `sources.lock.json`, runs the libraries' ordinary desktop tests, checks discovery from the actual packaged assemblies, and runs each automatic packaged suite twice. Live tests are excluded. Validation does not deploy, create release tags or publish GitHub/NuGet releases. See the [changelog](CHANGELOG.md) for collection changes.
 
 Hardware runs are a separate stage. Developers can use their own processor and a self-hosted runner through the [hardware CI setup guide and template](https://github.com/oznetmaster/CrestronHomeNUnit/blob/HEAD/docs/GitHubHardwareCI.md). Keep that orchestration and its credentials private; independent library repositories retain ordinary portable tests. Upgrade installed test hosts when adopting the shared processor lock so their standalone tiles participate in coordination.
 

@@ -180,5 +180,23 @@
       "weatherlink-live": "live"
     },
     "sdkSource": "CrestronHomeNUnit5"
+  },
+  "RainPointClient.ProcessorTests": {
+    "displayName": "RainPointClient Tests",
+    "tests": [
+      {
+        "source": "RainPointClient",
+        "project": "tests/RainPointClient.Tests/RainPointClient.Tests.csproj",
+        "frameworks": [
+          "net472",
+          "net10.0"
+        ]
+      }
+    ],
+    "documentation": [],
+    "suiteCategories": {
+      "rainpoint": "unit",
+      "rainpoint-live": "live"
+    }
   }
 }

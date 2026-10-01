@@ -22,6 +22,7 @@ on:
           - WiserHeatAPIv2.ProcessorTests
           - SimpleWeather.ProcessorTests
           - WeatherLinkLiveLibrary.ProcessorTests
+          - RainPointClient.ProcessorTests
       skip_hardware_checks:
         description: Publish without hardware validation when the processor or local runner is unavailable
         required: false

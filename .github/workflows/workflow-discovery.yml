@@ -28,6 +28,8 @@ jobs:
             expected: SimpleWeather processor workflow
           - project: workflows/WeatherLinkLiveLibrary.WorkflowTests/WeatherLinkLiveLibrary.WorkflowTests.csproj
             expected: WeatherLinkLiveLibrary processor workflow
+          - project: workflows/RainPointClient.WorkflowTests/RainPointClient.WorkflowTests.csproj
+            expected: RainPointClient processor workflow
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4

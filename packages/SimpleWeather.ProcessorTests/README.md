@@ -1,6 +1,6 @@
 # SimpleWeatherClient processor tests
 
-Runs the shared [SimpleWeatherClient NUnit suite](https://github.com/oznetmaster/SimpleWeatherClient) inside a Crestron Home processor. This package targets **net472 only**, uses official NUnit 4.6.1, and includes its own test host. Library and fixture source stay in their independent repository; the initial source pin is **v1.0.3**.
+Runs the shared [SimpleWeatherClient NUnit suite](https://github.com/oznetmaster/SimpleWeatherClient) inside a Crestron Home processor. This package targets **net472 only**, uses official NUnit 5.0.0, and includes its own test host. Library and fixture source stay in their independent repository; the exact migrated source revision is recorded in `sources.lock.json` and the published provenance receipt.
 
 ## Build and deploy in Visual Studio
 

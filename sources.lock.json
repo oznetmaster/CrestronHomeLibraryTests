@@ -4,43 +4,43 @@
     {
       "name": "KasaClient",
       "repository": "https://github.com/oznetmaster/KasaTapoClient.git",
-      "revision": "e93f81e8476f7a282660c2c2d4c2f99e2e171240",
+      "revision": "fba5bda246099513227634f1ee3774970c677a5b",
       "requiredProject": "KasaClient.Tests/KasaClient.Tests.csproj"
     },
     {
       "name": "CrestronHomeNUnit",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "5e17b683c2f905509363f011b642efc7a0c61ffc",
+      "revision": "ce916780ebafc78306fff11e614f3eef20ca2092",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     },
     {
       "name": "TeslaPowerwallLibrary",
       "repository": "https://github.com/oznetmaster/TeslaPowerwallLibrary.git",
-      "revision": "06749dcdd305213ac16cc3f3b2172190110d0e56",
+      "revision": "fd2078c88d73ea0eacb4309ee207f85ce0dbd668",
       "requiredProject": "TeslaPowerwallLibrary.Tests/TeslaPowerwallLibrary.Tests.csproj"
     },
     {
       "name": "AppleTVControlLibrary",
       "repository": "https://github.com/oznetmaster/AppleTVControlLibrary.git",
-      "revision": "99b7114404977e72a04699802be35edff329b6ab",
+      "revision": "5c995c7b838699883202193785f22d9b2c3689b5",
       "requiredProject": "tests/AppleTV.Companion.Tests/AppleTV.Companion.Tests.csproj"
     },
     {
       "name": "OverkizClient",
       "repository": "https://github.com/oznetmaster/OverkizClient.git",
-      "revision": "1adfd371003a0c0b85330cf0a14ed63c117e807b",
+      "revision": "5801a3ec5c2c740b2b6e2dfaf1d77a13dda59f4b",
       "requiredProject": "OverKizApi.Tests/OverKizApi.Tests.csproj"
     },
     {
       "name": "WiserHeatAPIv2",
       "repository": "https://github.com/oznetmaster/WiserHeatAPIv2.git",
-      "revision": "18a31fc0dfd7a2aea17bbcbd2c7d64deaef9b01f",
+      "revision": "671adda1a51eeb5b244ceddf133c6346696faa13",
       "requiredProject": "WiserHeatAPIv2.Tests/WiserHeatAPIv2.Tests.csproj"
     },
     {
       "name": "SimpleWeather",
       "repository": "https://github.com/oznetmaster/SimpleWeatherClient.git",
-      "revision": "e70f95131f55cca4aa14ab47767edcd800a94373",
+      "revision": "a3f6d5dfb130681cca38379bdb093e90b66fee1a",
       "requiredProject": "SimpleWeather.Tests/SimpleWeather.Tests.csproj"
     },
     {
@@ -52,8 +52,14 @@
     {
       "name": "CrestronHomeNUnit5",
       "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
-      "revision": "5a2d8080b2bbf7221bc8fc4cc53b35ac5bec4d1c",
+      "revision": "ce916780ebafc78306fff11e614f3eef20ca2092",
       "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
+    },
+    {
+      "name": "RainPointClient",
+      "repository": "https://github.com/oznetmaster/RainPointClient.git",
+      "revision": "1599e5c0646f6160dc7aada00132f69ad6fff212",
+      "requiredProject": "tests/RainPointClient.Tests/RainPointClient.Tests.csproj"
     }
   ]
 }

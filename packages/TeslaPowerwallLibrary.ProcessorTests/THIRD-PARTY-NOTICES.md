@@ -1,7 +1,7 @@
 # Third-party notices
 
 - **TeslaPowerwallLibrary and its tests** — Copyright © 2026 Neil Colvin, MIT. Exact source revision is recorded in the release `.sources.json`; the license is retained in `licenses/TeslaPowerwallLibrary-LICENSE.txt`.
-- **NUnit 4.6.1 and Crestron Home NUnit** — official NUnit framework and the pinned MIT-licensed host. The package retains their complete notices and license texts under `Licenses/CrestronHomeNUnit`. The selected library tests are not NUnit's framework self-tests.
+- **NUnit 5.0.0 and Crestron Home NUnit** — official NUnit framework and the pinned MIT-licensed host. The package retains their complete notices and license texts under `Licenses/CrestronHomeNUnit`. The selected library tests are not NUnit's framework self-tests.
 - **Google.Protobuf 3.35.1** — Google Inc., BSD-3-Clause; see `licenses/Google.Protobuf-LICENSE.txt`.
 - **YamlDotNet 18.1.0** — Antoine Aubry and contributors, MIT; see `licenses/YamlDotNet-LICENSE.txt`.
 - **System.Text.Json 10.0.12 and Microsoft.Extensions.Logging.Abstractions 10.0.12** — Microsoft and contributors, MIT. Their runtime support dependencies retain MIT terms; package third-party notices are included in `licenses`.

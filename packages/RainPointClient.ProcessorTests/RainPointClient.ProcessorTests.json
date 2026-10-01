@@ -2,10 +2,10 @@
   "SchemaVersion": "2.0",
   "GeneralInformation": {
     "MinSdkVersion": "27.0000.0000",
-    "Guid": "35e14169-8739-48b3-a060-aafb04d2282c",
+    "Guid": "238ebbe6-5e72-4730-81e9-b4dc37b6f8a3",
     "DeviceType": "Utility",
     "Manufacturer": "Neil Colvin",
-    "BaseModel": "TeslaPowerwallLibrary Tests",
+    "BaseModel": "RainPointClient Tests",
     "OtherSupportedModels": [],
     "SupportedSeries": [],
     "DependencyGroup": "",
@@ -16,7 +16,7 @@
       "Website": "",
       "PhoneNumber": ""
     },
-    "DriverVersion": "1.1.000.0000",
+    "DriverVersion": "1.0.000.0000",
     "VersionDate": "2026-10-01 00:00:00"
   }
 }

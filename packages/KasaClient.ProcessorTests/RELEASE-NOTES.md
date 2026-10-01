@@ -1,3 +1,7 @@
+# Test package 1.1.0 - NUnit 5
+
+Independent test-tooling update to NUnit 5.0.0 and CrestronHomeNUnit SDK 2.2.0. Async assertions are awaited and discarded tasks fail compilation. Production library versions and APIs are unchanged. New versioned test artifacts are published with the existing product release; original assets remain available.
+
 # KasaTapoClient Tests
 
 ## 1.0.1

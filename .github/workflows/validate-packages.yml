@@ -31,6 +31,7 @@ jobs:
           - WiserHeatAPIv2.ProcessorTests
           - SimpleWeather.ProcessorTests
           - WeatherLinkLiveLibrary.ProcessorTests
+          - RainPointClient.ProcessorTests
     defaults:
       run:
         shell: pwsh
