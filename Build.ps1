@@ -19,7 +19,7 @@ $msbuild = & $vswhere -latest -products '*' -requires Microsoft.Component.MSBuil
 if (!$msbuild) { throw 'Visual Studio MSBuild is required.' }
 $buildArguments = @($project, '/restore', '/nologo', '/v:minimal', "/p:Configuration=$Configuration", '/p:BuildProcessorTestPackages=true', '/p:DeployAfterBuild=false')
 $config = & "$PSScriptRoot/Get-ReleasePackage.ps1" -Package $Package
-if ($config.sdkSource) {
+if ($config.ContainsKey('sdkSource') -and $config.sdkSource) {
     if ($config.sdkSource -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid package SDK source.' }
     $buildArguments += "/p:ProcessorTestSdkRoot=$PSScriptRoot/sources/$($config.sdkSource)"
 }

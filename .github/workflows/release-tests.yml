@@ -72,7 +72,10 @@ jobs:
         shell: pwsh
         run: |
           ./Initialize-Sources.ps1
-          "PROCESSOR_SDK=$env:GITHUB_WORKSPACE/sources/CrestronHomeNUnit" >> $env:GITHUB_ENV
+          $config = ./Get-ReleasePackage.ps1 -Package $env:TEST_PACKAGE
+          $sdkSource = if ($config.ContainsKey('sdkSource') -and $config.sdkSource) { $config.sdkSource } else { 'CrestronHomeNUnit' }
+          if ($sdkSource -notmatch '^[A-Za-z][A-Za-z0-9]*$') { throw 'Invalid package SDK source.' }
+          "PROCESSOR_SDK=$env:GITHUB_WORKSPACE/sources/$sdkSource" >> $env:GITHUB_ENV
       - name: Prepare test-package version
         shell: pwsh
         run: |
