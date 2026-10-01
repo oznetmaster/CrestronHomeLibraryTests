@@ -14,9 +14,9 @@ if ($Configuration -eq 'Release' -and !$LockedSources) { throw 'Release builds r
 if ($LockedSources) { & (Join-Path $PSScriptRoot 'Initialize-Sources.ps1') }
 $project = Join-Path $PSScriptRoot "packages\$Package\$Package.csproj"
 if (!(Test-Path -LiteralPath $project)) { throw "Package project not found: $Package" }
-$vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
-$msbuild = & $vswhere -latest -products '*' -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
-if (!$msbuild) { throw 'Visual Studio MSBuild is required.' }
+# Resolve the SDK using global.json through dotnet. A Visual Studio Build Tools
+# installation may lack the .NET SDK resolver even when dotnet is installed.
+if (!(Get-Command dotnet -ErrorAction SilentlyContinue)) { throw 'The .NET SDK specified by global.json is required.' }
 $buildArguments = @($project, '/restore', '/nologo', '/v:minimal', "/p:Configuration=$Configuration", '/p:BuildProcessorTestPackages=true', '/p:DeployAfterBuild=false')
 $config = & "$PSScriptRoot/Get-ReleasePackage.ps1" -Package $Package
 if ($config.ContainsKey('sdkSource') -and $config.sdkSource) {
@@ -25,7 +25,8 @@ if ($config.ContainsKey('sdkSource') -and $config.sdkSource) {
 }
 if ($ReleaseVersion) { $buildArguments += "/p:ReleaseVersion=$ReleaseVersion" }
 if ($ManifestUtilExe) { $buildArguments += "/p:ManifestUtilExe=$ManifestUtilExe", "/p:LocalCrestronSdkLibDir=$(Split-Path $ManifestUtilExe -Parent)" }
-& $msbuild @buildArguments
+Push-Location $PSScriptRoot
+try { & dotnet msbuild @buildArguments } finally { Pop-Location }
 if ($LASTEXITCODE -ne 0) { throw 'Package build failed.' }
 $provenance = [ordered]@{ package=$Package; configuration=$Configuration; lockedSources=[bool]$LockedSources; sources=@() }
 $lock = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'sources.lock.json') -Raw | ConvertFrom-Json
