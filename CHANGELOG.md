@@ -1,67 +1,67 @@
 # Changelog
 
-## WeatherLinkLiveLibrary.ProcessorTests v1.1.0 - 2026-10-01
+## WeatherLinkLiveLibrary.ProcessorTests v1.1.0 — 2026-10-01
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## Packaging SDK compatibility - 2026-09-18 (no package release)
+## Packaging SDK compatibility — 2026-09-18 (no package release)
 
 - Pin the shared processor-test packaging SDK to released CrestronHomeNUnit 1.11.0. Package identity is verified from the metadata inside the completed package, supporting ManifestUtil versions that no longer leave a separate staging metadata file.
 - Library source pins and published processor-package versions remain unchanged. This updates build tooling; each resulting package still requires its normal build and processor validation.
 
-## Offline release workflow option - 2026-09-15 (no package release)
+## Offline release workflow option — 2026-09-15 (no package release)
 
 - Allow an explicit manual release when local hardware or the self-hosted runner is unavailable, with the reason and exact source recorded in the workflow summary.
 - Keep hosted source validation mandatory and preserve all build, test and packaging steps. No runtime, API or package-version changes.
 
-## Discovery-based CI coverage - 2026-09-15 (no package release)
+## Discovery-based CI coverage — 2026-09-15 (no package release)
 
 - Replace duplicated counts with source discovery, desktop execution and merged-package identity comparisons across all seven library packages.
 - Discover separate live-only assemblies, distinguish Wiser read-only/control suites and execute automatic package suites twice. Live device tests remain excluded from hosted execution.
 - Preserve duplicate NUnit display-name multiplicity and normalize known shim type relocation without changing quoted test data. No library or processor runtime code changes.
 
-## CI package cleanup - 2026-09-15 (no driver or processor package release)
+## CI package cleanup — 2026-09-15 (no driver or processor package release)
 
 - Update Test Explorer workflow containers to CrestronHomeNUnit.TestAdapter 1.3.0 and document opt-in storage cleanup after successful CI runs.
 - Retain original deployment filenames, protect pre-existing/manual packages and preserve failed-run evidence. Cleanup frees archive storage without rebooting; Home can retain cached catalogue entries until its next planned reboot.
 - Actual driver/library code and processor test packages are unchanged by this tooling update.
 
-## CI validation - 2026-09-15 (no package release)
+## CI validation — 2026-09-15 (no package release)
 
 - Revalidate the current default-branch source after successful release workflows, including version commits created by GitHub Actions.
 - Allow maintainers to configure exact-source, App-specific checks that must pass before publishing through `RELEASE_REQUIRED_CHECKS`; missing, failed or unconfirmed checks block the release.
 
-## Build tooling and service validation - 2026-09-15 (no package release)
+## Build tooling and service validation — 2026-09-15 (no package release)
 
 - Pin the validated Apple TV library build fix that keeps generated XML documentation separate for each target framework. Runtime code and test cases are unchanged; existing processor package releases remain applicable.
 - Complete unattended service-account workflows for all seven library packages: local tests, package deployment/activation, processor tests, temporary-instance removal and processor lease release. Live suites remain opt-in and were not part of these test-only service runs.
 
 
-## SimpleWeather.ProcessorTests v1.0.1 - 2026-09-15
+## SimpleWeather.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## WeatherLinkLiveLibrary.ProcessorTests v1.0.1 - 2026-09-15
+## WeatherLinkLiveLibrary.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## WiserHeatAPIv2.ProcessorTests v1.0.1 - 2026-09-15
+## WiserHeatAPIv2.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## OverkizClient.ProcessorTests v1.0.2 - 2026-09-15
+## OverkizClient.ProcessorTests v1.0.2 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## KasaClient.ProcessorTests v1.0.1 - 2026-09-15
+## KasaClient.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## AppleTVControlLibrary.ProcessorTests v1.0.1 - 2026-09-15
+## AppleTVControlLibrary.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## TeslaPowerwallLibrary.ProcessorTests v1.0.1 - 2026-09-15
+## TeslaPowerwallLibrary.ProcessorTests v1.0.1 — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
@@ -76,7 +76,7 @@ Published processor test package on GitHub. This is a test-package release only;
 
 
 Individual processor package versions are published separately on GitHub. These dated source changes do not announce a package release.
-## WeatherLinkLiveLibrary.ProcessorTests 1.1.0 - 2026-10-01
+## WeatherLinkLiveLibrary.ProcessorTests 1.1.0 — 2026-10-01
 
 Use the independently pinned NUnit 5 SDK and WeatherLinkLiveLibrary 2.1.0 recovery tests. Unrelated test packages keep their existing SDK/source pins.
 
