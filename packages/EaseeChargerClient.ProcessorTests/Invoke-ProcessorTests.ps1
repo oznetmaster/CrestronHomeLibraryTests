@@ -2,6 +2,7 @@ param(
     [Parameter(Mandatory)][string]$AdmissionDll,
     [Parameter(Mandatory)][string]$PoolCatalog,
     [Parameter(Mandatory)][string]$WorkflowBin,
+    [Parameter(Mandatory)][ValidateNotNullOrEmpty()][string]$RoomName,
     [string]$ProtectedRoot='C:\ProgramData\CrestronHomeHardwareCI',
     [switch]$Live,
     [string]$ProcessorSdkRoot
@@ -39,7 +40,7 @@ try {
             Host=$identity.Host;SshFingerprint=$identity.SshFingerprint;CertificateSha256=$identity.CertificateSha256
             SourceRoots=@($collection,$library,$sdk)
             LocalTests=@(@{Project="$library\EaseeChargerClient.Tests\EaseeChargerClient.Tests.csproj";MinimumPassed=902;Filter='TestCategory!=Live'})
-            TestPackage=@{Project="$package\EaseeChargerClient.ProcessorTests.csproj";PackagePath="$package\bin\Debug\net472\EaseeChargerClient.ProcessorTests.pkg";InstanceName='Easee Client Validation';LocationId=$identity.LocationId}
+            TestPackage=@{Project="$package\EaseeChargerClient.ProcessorTests.csproj";PackagePath="$package\bin\Debug\net472\EaseeChargerClient.ProcessorTests.pkg";InstanceName='Easee Client Validation';RoomName=$RoomName}
             ProcessorSuites=@(@{Id='easeechargerclient';MinimumPassed=451;Inputs=@()})
             LiveSuites=$liveSuites;DeployedChecks=@()
             RemoveTestInstanceAfterRun=$true;RemoveTestPackageAfterSuccessfulRun=$true
