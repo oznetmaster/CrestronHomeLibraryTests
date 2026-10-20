@@ -198,5 +198,33 @@
       "rainpoint": "unit",
       "rainpoint-live": "live"
     }
+  },
+  "EaseeChargerClient.ProcessorTests": {
+    "displayName": "EaseeChargerClient Tests",
+    "tests": [
+      {
+        "source": "EaseeChargerClient",
+        "project": "EaseeChargerClient.Tests/EaseeChargerClient.Tests.csproj",
+        "frameworks": [
+          "net10.0",
+          "net472"
+        ]
+      },
+      {
+        "collectionProject": "workflows/EaseeChargerClient.ProcessorLiveTests/EaseeChargerClient.ProcessorLiveTests.csproj",
+        "source": "EaseeChargerClient",
+        "project": "EaseeChargerClient.LiveTests/EaseeChargerClient.LiveTests.csproj",
+        "frameworks": [
+          "net472"
+        ],
+        "discoveryOnly": true
+      }
+    ],
+    "documentation": [],
+    "suiteCategories": {
+      "easeechargerclient": "unit",
+      "easeechargerclient-live": "live-read"
+    },
+    "sdkSource": "EaseeProcessorSdk"
   }
 }

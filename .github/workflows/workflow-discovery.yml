@@ -30,6 +30,8 @@ jobs:
             expected: WeatherLinkLiveLibrary processor workflow
           - project: workflows/RainPointClient.WorkflowTests/RainPointClient.WorkflowTests.csproj
             expected: RainPointClient processor workflow
+          - project: workflows/EaseeChargerClient.WorkflowTests/EaseeChargerClient.WorkflowTests.csproj
+            expected: EaseeChargerClient processor workflow
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4

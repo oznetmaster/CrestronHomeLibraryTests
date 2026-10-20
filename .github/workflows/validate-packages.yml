@@ -32,6 +32,7 @@ jobs:
           - SimpleWeather.ProcessorTests
           - WeatherLinkLiveLibrary.ProcessorTests
           - RainPointClient.ProcessorTests
+          - EaseeChargerClient.ProcessorTests
     defaults:
       run:
         shell: pwsh

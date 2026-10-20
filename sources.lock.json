@@ -60,6 +60,18 @@
       "repository": "https://github.com/oznetmaster/RainPointClient.git",
       "revision": "1599e5c0646f6160dc7aada00132f69ad6fff212",
       "requiredProject": "tests/RainPointClient.Tests/RainPointClient.Tests.csproj"
+    },
+    {
+      "name": "EaseeChargerClient",
+      "repository": "https://github.com/oznetmaster/EaseeChargerClient.git",
+      "revision": "b1a4242390d77b754389197074082b76ec1c76f2",
+      "requiredProject": "EaseeChargerClient.Tests/EaseeChargerClient.Tests.csproj"
+    },
+    {
+      "name": "EaseeProcessorSdk",
+      "repository": "https://github.com/oznetmaster/CrestronHomeNUnit.git",
+      "revision": "d268167a15df665acfb4506a53d238cea833a42f",
+      "requiredProject": "ProcessorTestPackage/ProcessorTestPackage.targets"
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "Name": "Easee Charger Client Tests",
+  "Port": 0,
+  "Suites": [
+    {
+      "Id": "easeechargerclient",
+      "Name": "Easee Charger Client Tests \u2014 Unit Tests",
+      "FilterXml": "<filter><and><namespace re='1'>^EaseeChargerClient\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
+      "ManualOnly": false
+    },
+    {
+      "Id": "easeechargerclient-live",
+      "Name": "Easee Charger Client \u2014 Read-only Live Tests",
+      "FilterXml": "<filter><namespace>EaseeChargerClient.ProcessorLiveTests</namespace></filter>",
+      "ManualOnly": true
+    }
+  ]
+}
