@@ -1,4 +1,7 @@
 # TeslaPowerwallLibrary Tests
+## 2.3.0 library validation candidate
+
+The collection source pin now selects TeslaPowerwallLibrary commit `6eada0ccd2af129bf76e1cd9e009a3df15b5a65c` for its 2.3.0 release validation. The automatic `teslapowerwall` suite includes every non-Live fixture, including portable local settings contracts. The manual `live` suite discovers all Live-category fixtures; it is never run by the automatic processor workflow. This restores matching source/package coverage after the library added local TEDAPI fixtures. The older test counts and hardware evidence below describe their dated builds, not this candidate. This preparation does not publish a new processor-test package.
 
 ## NUnit 5 test package
 

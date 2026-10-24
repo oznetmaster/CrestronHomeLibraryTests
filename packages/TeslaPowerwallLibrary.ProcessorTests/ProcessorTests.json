@@ -5,20 +5,14 @@
     {
       "Id": "teslapowerwall",
       "Name": "TeslaPowerwallLibrary Tests — Unit Tests",
-      "FilterXml": "<filter><and><namespace re='1'>^TeslaPowerwallLibrary\\.Tests($|[.])</namespace><not><cat>Live</cat></not><not><class>TeslaPowerwallLibrary.Tests.LiveLocalSettingsTests</class></not></and></filter>",
+      "FilterXml": "<filter><and><namespace re='1'>^TeslaPowerwallLibrary\\.Tests($|[.])</namespace><not><cat>Live</cat></not></and></filter>",
       "ManualOnly": false
     },
     {
       "Id": "live",
-      "Name": "TeslaPowerwallLibrary Tests - Live Site (Owner, Fleet or Local)",
-      "FilterXml": "<filter><or><test>TeslaPowerwallLibrary.Tests.LiveSiteTests.RealSite_SelectsSiteAndReadsName</test><test>TeslaPowerwallLibrary.Tests.LiveSiteTests.RealSite_ReadsTypedPowerAndBattery</test><test>TeslaPowerwallLibrary.Tests.LiveSiteTests.RealSite_RefreshesOperatingConfiguration</test></or></filter>",
+      "Name": "TeslaPowerwallLibrary Tests - Live APIs (manual only)",
+      "FilterXml": "<filter><and><namespace re='1'>^TeslaPowerwallLibrary\\.Tests($|[.])</namespace><cat>Live</cat></and></filter>",
       "ManualOnly": true
-    },
-    {
-      "Id": "local-settings",
-      "Name": "Portable local settings contracts",
-      "FilterXml": "<filter><class>TeslaPowerwallLibrary.Tests.LiveLocalSettingsTests</class></filter>",
-      "ManualOnly": false
     }
   ]
 }
