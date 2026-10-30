@@ -1,6 +1,6 @@
 # Changelog
 
-## WeatherLinkLiveLibrary.ProcessorTests 1.1.0 — 2026-10-01
+## WeatherLinkLiveLibrary.ProcessorTests [1.1.0](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.1.0) — 2026-10-01
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
@@ -37,31 +37,31 @@ Published processor test package on GitHub. This is a test-package release only;
 - Complete unattended service-account workflows for all seven library packages: local tests, package deployment/activation, processor tests, temporary-instance removal and processor lease release. Live suites remain opt-in and were not part of these test-only service runs.
 
 
-## SimpleWeather.ProcessorTests 1.0.1 — 2026-09-15
+## SimpleWeather.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/SimpleWeather.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## WeatherLinkLiveLibrary.ProcessorTests 1.0.1 — 2026-09-15
+## WeatherLinkLiveLibrary.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## WiserHeatAPIv2.ProcessorTests 1.0.1 — 2026-09-15
+## WiserHeatAPIv2.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WiserHeatAPIv2.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## OverkizClient.ProcessorTests 1.0.2 — 2026-09-15
+## OverkizClient.ProcessorTests [1.0.2](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/OverkizClient.ProcessorTests-v1.0.2) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## KasaClient.ProcessorTests 1.0.1 — 2026-09-15
+## KasaClient.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/KasaClient.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## AppleTVControlLibrary.ProcessorTests 1.0.1 — 2026-09-15
+## AppleTVControlLibrary.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/AppleTVControlLibrary.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
-## TeslaPowerwallLibrary.ProcessorTests 1.0.1 — 2026-09-15
+## TeslaPowerwallLibrary.ProcessorTests [1.0.1](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/TeslaPowerwallLibrary.ProcessorTests-v1.0.1) — 2026-09-15
 
 Published processor test package on GitHub. This is a test-package release only; no driver or library NuGet package is published. See the matching package release notes for changes and validation.
 
@@ -76,7 +76,7 @@ Published processor test package on GitHub. This is a test-package release only;
 
 
 Individual processor package versions are published separately on GitHub. These dated source changes do not announce a package release.
-## WeatherLinkLiveLibrary.ProcessorTests 1.1.0 — 2026-10-01
+## WeatherLinkLiveLibrary.ProcessorTests [1.1.0](https://github.com/oznetmaster/CrestronHomeLibraryTests/releases/tag/WeatherLinkLiveLibrary.ProcessorTests-v1.1.0) — 2026-10-01
 
 Use the independently pinned NUnit 5 SDK and WeatherLinkLiveLibrary 2.1.0 recovery tests. Unrelated test packages keep their existing SDK/source pins.
 
