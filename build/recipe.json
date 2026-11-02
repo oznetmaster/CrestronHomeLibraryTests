@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "tasks": {
+    "validate-packages-validate-build-and-validate-without-publishing": {
+      "commands": [
+        {
+          "executable": "pwsh",
+          "script": "build/steps/validate-packages-validate-build-and-validate-without-publishing.ps1",
+          "shell": "pwsh"
+        }
+      ]
+    },
+    "workflow-discovery-discover-verify-offline-test-explorer-discovery": {
+      "commands": [
+        {
+          "executable": "pwsh",
+          "script": "build/steps/workflow-discovery-discover-verify-offline-test-explorer-discovery.ps1",
+          "shell": "pwsh"
+        }
+      ]
+    }
+  }
+}
