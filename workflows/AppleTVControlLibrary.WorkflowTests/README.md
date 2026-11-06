@@ -6,6 +6,8 @@ Before launching Visual Studio, set `CRESTRON_HOME_APPLETVCONTROLLIBRARY_WORKFLO
 
 Select **AppleTVControlLibrary processor workflow** in Test Explorer. The workflow runs the local tests itself, then builds/deploys the processor package, waits for activation, runs the required processor suites and removes its test instance when `removeTestInstanceAfterRun` is true. Optional live suites and actual-driver updates run only when explicitly included in the private plan. Discovery is offline and never operates the processor. Attempting execution without private settings fails.
 
+The two credential-file replacement cases that exercise Windows delete sharing run in the desktop stage on both target frameworks. The required processor suite excludes those two cases because the Crestron host does not implement Windows file sharing semantics; the other credential storage tests remain in the processor suite.
+
 Use the existing NUnit projects for ordinary local tests. Select this workflow separately for processor testing; avoid selecting both in the same test cycle, and never put this workflow project into its own plan's `localTests`.
 
 ```powershell
